@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangla Keyboard CS - The Best Bengali Keyboard for Windows</title>
+    
+    <!-- Google Fonts for better Bengali typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0078D7;
+            --primary-hover: #005A9E;
+            --success: #10B981;
+            --success-hover: #059669;
+            --dark: #1E293B;
+            --light: #F8FAFC;
+            --gray: #64748B;
+            --border: #E2E8F0;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header / Hero Section */
+        header {
+            background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-banner {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 120, 215, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: var(--success-hover);
+        }
+
+        /* Badges */
+        .badges {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: var(--dark);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 0;
+        }
+
+        section.bg-white {
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--dark);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        /* Voice Typing Steps */
+        .steps {
+            background: #fffbeb;
+            padding: 30px;
+            border-left: 5px solid #f59e0b;
+            border-radius: 8px;
+        }
+        .steps ol {
+            font-size: 1.1rem;
+            margin-left: 20px;
+        }
+        .steps li {
+            margin-bottom: 10px;
+        }
+
+        /* Pricing Table */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .pricing-table th, .pricing-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pricing-table th {
+            background-color: var(--primary);
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .pricing-table tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .lifetime-row {
+            background-color: #ecfdf5 !important;
+            font-weight: bold;
+        }
+
+        .pricing-note {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        /* Bangla Toolbox Box */
+        .toolbox-box {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .toolbox-box a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .toolbox-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        footer a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <!-- ডামি ব্যানার লিংক, এখানে আপনার গিটহাবের এসেটস ফোল্ডারের লিংক বসাবেন -->
+            <img src="assets/banner.png" alt="Bangla Keyboard CS Banner" class="hero-banner">
+            
+            <h1>Bangla Keyboard CS (বাংলা কীবোর্ড সিএস)</h1>
+            <p class="tagline">উইন্ডোজের জন্য সবচেয়ে আধুনিক, ফাস্ট, লাইটওয়েট এবং স্মার্ট বাংলা কীবোর্ড!<br>
+            <i>স্মার্ট সাজেশন, ওয়াইফাই ভয়েস টাইপিং এবং ফাইল ট্রান্সফার সাপোর্টসহ।</i></p>
+            
+            <a href="https://drive.google.com/drive/u/0/folders/1saIx04GYJ0nCtGrFedzpL8nfdeU7Phu4" target="_blank" class="btn btn-primary">⬇️ ডাউনলোড করুন (Download)</a>
+            
+            <div class="badges">
+                <span class="badge">💻 Windows 10 | 11</span>
+                <span class="badge">🆓 Freemium</span>
+                <span class="badge">⚡ Fast & Lightweight</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="bg-white">
+        <div class="container">
+            <h2 class="section-title">✨ মূল ফিচারসমূহ (Core Features)</h2>
+            <div class="features-grid">
+                
+                <div class="feature-card">
+                    <!-- ডামি আইকন লিংক -->
+                    <img src="assets/icon-suggestion.png" alt="Suggestion" class="feature-icon">
+                    <div class="feature-title">স্মার্ট অটো-সাজেশন</div>
+                    <p>৯ লক্ষ+ শব্দের বিশাল ডিকশনারি সাপোর্ট। টাইপ করার সাথে সাথেই নির্ভুল সাজেশন এবং নেক্সট-ওয়ার্ড প্রেডিকশন, যা আপনার টাইপিং স্পিড বহুগুণ বাড়িয়ে দেবে।</p>
+                </div>
+
+                <div class="feature-card">
+                    <img src="assets/icon-voice.png" alt="Voice Typing" class="feature-icon">
+                    <div class="feature-title">ওয়াইফাই ভয়েস টাইপিং (যেকোনো ভাষা)</div>
+                    <p>পিসিতে কোনো মাইক্রোফোন ছাড়াই, মোবাইল দিয়ে স্ক্যান করে পিসিতে টাইপ করুন। মোবাইলের কীবোর্ড দিয়ে <b>পৃথিবীর যেকোনো ভাষায়</b> কথা বললে তা সরাসরি পিসিতে টাইপ হয়ে যাবে!</p>
+                </div>
+
+                <div class="feature-card">
+                    <img src="assets/icon-file.png" alt="File Transfer" class="feature-icon">
+                    <div class="feature-title">লোকাল ফাইল ট্রান্সফার</div>
+                    <p>কোনো ক্যাবল বা ইন্টারনেট ডেটা খরচ ছাড়াই পিসি থেকে মোবাইলে বা মোবাইল থেকে পিসিতে ওয়াইফাইয়ের মাধ্যমে অতি দ্রুতগতিতে ফাইল আদান-প্রদান করুন।</p>
+                </div>
+
+                <div class="feature-card">
+                    <img src="assets/icon-converter.png" alt="Converter" class="feature-icon">
+                    <div class="feature-title">লাইভ কনভার্টার</div>
+                    <p>ইউনিকোড থেকে বিজয় (ANSI) এবং বিজয় থেকে ইউনিকোডে রিয়েল-টাইম কনভার্ট করার সুবিধা। সাথে থাকছে আনডু, রিডু এবং কাস্টম প্রিসেট।</p>
+                </div>
+
+                <div class="feature-card">
+                    <img src="assets/icon-layout.png" alt="Layouts" class="feature-icon">
+                    <div class="feature-title">মাল্টিপল ও কাস্টম লেআউট</div>
+                    <p>বাংলা (ইউনিকোড, আন্সি, ফনেটিক), ইংরেজি এবং <b>আরবি</b> লেআউট। সাথে নিজের ইচ্ছেমতো শর্টকাট ও যুক্তবর্ণ দিয়ে ৩টি কাস্টম লেআউট তৈরির সুবিধা।</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Voice Typing Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">🎙️ ক্রস-ল্যাঙ্গুয়েজ ভয়েস টাইপিং (কিভাবে কাজ করে?)</h2>
+            <div class="steps">
+                <p>মোবাইল দিয়ে পিসিতে রিয়েল-টাইম ভয়েস টাইপ করার এক যুগান্তকারী ফিচার! এটি যেকোনো ভাষায় কাজ করে:</p>
+                <ol>
+                    <li>কীবোর্ডের ট্রে মেনু বা ডাবল-ক্লিক করে <b>ওয়াইফাই ভয়েস টাইপিং</b> অপশনটি চালু করুন।</li>
+                    <li>স্ক্রিনে আসা <b>QR কোডটি</b> আপনার মোবাইল দিয়ে স্ক্যান করুন (পিসি ও মোবাইল একই ওয়াইফাই বা হটস্পটে থাকতে হবে)।</li>
+                    <li>মোবাইলের ব্রাউজারে একটি পেজ ওপেন হবে। সেখানে থাকা টেক্সটবক্সে ক্লিক করে আপনার <b>মোবাইলের কীবোর্ডের মাইক (🎤) আইকনে</b> চাপ দিন।</li>
+                    <li>এবার আপনি <b>বাংলা, ইংরেজি, আরবি, হিন্দি, স্প্যানিশ—যেকোনো ভাষায়</b> কথা বলুন। মোবাইলের কীবোর্ড যা চিনতে পারবে, সেটি চোখের পলকে আপনার পিসিতে টাইপ হয়ে যাবে!</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bangla Toolbox Ecosystem -->
+    <section class="bg-white">
+        <div class="container">
+            <div class="toolbox-box">
+                <h2 style="color: white; margin-top: 0;">🧰 Bangla Toolbox ইকোসিস্টেম</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 20px;">এই কীবোর্ডটি সরাসরি আমাদের ওয়েব প্ল্যাটফর্ম <b>Bangla Toolbox</b> এর সাথে কানেক্টেড।</p>
+                <p>আপনি চাইলে কোনো অ্যাপ ইন্সটল না করেও ব্রাউজার থেকে সরাসরি আমাদের ওয়েব প্ল্যাটফর্মে ভিজিট করে ভয়েস টাইপিং এবং ফাইল ট্রান্সফার করতে পারবেন। এছাড়াও বাংলা নিয়ে কাজ করার জন্য কনভার্টার, টাইপ টেস্ট, টেক্সট এডিটরসহ আরও <b>৫০+ প্রয়োজনীয় টুলস</b> রয়েছে সেখানে!</p>
+                <br>
+                <a href="https://banglatoolbox.github.io/" target="_blank" class="btn" style="background: white; color: var(--dark);">🌐 ভিজিট করুন: banglatoolbox.github.io</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">👑 প্রিমিয়াম লাইসেন্স ও প্রাইসিং</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px;">
+                কীবোর্ডের বেসিক ফিচারগুলো সবার জন্য <b>সম্পূর্ণ ফ্রি</b>। তবে লাইভ ভয়েস টাইপিং এবং প্রো ফিচারগুলো পরিচালনার জন্য আমাদের একটি নামমাত্র মূল্যের <b>ফ্রিমিয়াম/ডোনেশন ভিত্তিক প্রাইসিং</b> রয়েছে। <br>
+                আমাদের প্রাইসিং মডেল অত্যন্ত সহজ: <b>"১ টাকায় ১ দিন"</b>।
+            </p>
+
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>প্যাকেজের নাম</th>
+                        <th>মেয়াদ</th>
+                        <th>মূল্য (BDT)</th>
+                        <th>সুবিধা</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>অর্ধ-বার্ষিক</b></td>
+                        <td>৬ মাস (১৮০ দিন)</td>
+                        <td><b>১৫০ টাকা</b></td>
+                        <td>প্রো ফিচার অ্যাক্সেস</td>
+                    </tr>
+                    <tr>
+                        <td><b>বার্ষিক</b></td>
+                        <td>১ বছর (৩৬৫ দিন)</td>
+                        <td><b>৩০০ টাকা</b></td>
+                        <td>প্রো ফিচার অ্যাক্সেস</td>
+                    </tr>
+                    <tr>
+                        <td><b>দ্বি-বার্ষিক</b></td>
+                        <td>২ বছর (৭৩০ দিন)</td>
+                        <td><b>৫০০ টাকা</b></td>
+                        <td>প্রো ফিচার অ্যাক্সেস</td>
+                    </tr>
+                    <tr class="lifetime-row">
+                        <td><b>লাইফটাইম 🌟</b></td>
+                        <td>আজীবন (Lifetime)</td>
+                        <td><b>১,০০০ টাকা</b></td>
+                        <td>লাইফটাইম আপডেট ও সাপোর্ট</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="pricing-note">
+                <i>বিঃদ্রঃ লাইসেন্স কী (Key) আপনার পিসির ডিভাইস আইডির (Device ID) সাথে লিংক করা থাকবে। মেয়াদ থাকাকালীন সময়ে আপনি একাধিকবার উইন্ডোজ সেটআপ দিলেও এক্সপোর্ট করা লাইসেন্স দিয়ে পুনরায় তা অ্যাক্টিভ করতে পারবেন।</i>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer>
+        <div class="container">
+            <div class="contact-info">
+                <h3 style="color: white; margin-bottom: 20px;">📞 যোগাযোগ ও সাপোর্ট</h3>
+                <p>যেকোনো সমস্যা, লাইসেন্স ক্রয় অথবা ডোনেশনের জন্য ডেভেলপারের সাথে যোগাযোগ করুন:</p>
+                <p>
+                    <b>ডেভেলপার:</b> Md Shahiduzzaman Sifat <br>
+                    <b>WhatsApp:</b> <a href="https://wa.me/+8801778472964" target="_blank">+88 01778472964</a> <br>
+                    <b>ইমেইল:</b> mdshahiduzzamansifat@gmail.com / mdsifatgid@gmail.com <br>
+                    <b>ফেসবুক:</b> <a href="https://www.facebook.com/mdsifatfbid" target="_blank">fb.com/mdsifatfbid</a>
+                </p>
+            </div>
+            <p style="margin-top: 40px; color: var(--gray);">
+                <i>Made with ❤️ by Md Shahiduzzaman Sifat for the Bengali Community.</i>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
