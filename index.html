@@ -21,6 +21,11 @@
             --danger: #EF4444;
         }
 
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Hind Siliguri', sans-serif;
             margin: 0;
@@ -36,15 +41,96 @@
             padding: 0 20px;
         }
 
+        /* --- Navigation Bar --- */
+        .navbar {
+            background-color: var(--dark);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .nav-brand img {
+            height: 32px;
+            border-radius: 6px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-btn-download {
+            background-color: var(--primary);
+            color: white !important;
+            padding: 6px 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .nav-btn-download:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Mobile Navbar Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+        }
+
         /* Header / Hero Section */
         header {
             background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
-            padding: 60px 0 40px;
+            padding: 40px 0;
             text-align: center;
             border-bottom: 1px solid var(--border);
         }
 
         .hero-banner {
+            width: 100%;
             max-width: 100%;
             height: auto;
             border-radius: 12px;
@@ -87,15 +173,6 @@
             transform: translateY(-2px);
         }
 
-        .btn-success {
-            background-color: var(--success);
-            color: white;
-        }
-
-        .btn-success:hover {
-            background-color: var(--success-hover);
-        }
-
         /* Badges */
         .badges {
             margin-top: 20px;
@@ -125,6 +202,7 @@
         /* Sections */
         section {
             padding: 60px 0;
+            scroll-margin-top: 70px; /* Navbar এর কারণে সেকশন যাতে ঢেকে না যায় */
         }
 
         section.bg-white {
@@ -273,6 +351,7 @@
             color: white;
             text-align: center;
             padding: 40px 0;
+            scroll-margin-top: 70px;
         }
 
         footer a {
@@ -287,6 +366,23 @@
     </style>
 </head>
 <body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-brand">
+                <img src="https://banglakeyboardcs.github.io/assets/Bangla_Keyboard_CS.png" alt="Logo">
+                Bangla Keyboard CS
+            </a>
+            <ul class="nav-links">
+                <li><a href="#changelog">চেইঞ্জলগ (Update)</a></li>
+                <li><a href="#features">কোর ফিচার</a></li>
+                <li><a href="#toolbox">Bangla Toolbox</a></li>
+                <li><a href="#contact">যোগাযোগ</a></li>
+                <li><a href="https://drive.google.com/drive/u/0/folders/1saIx04GYJ0nCtGrFedzpL8nfdeU7Phu4" target="_blank" class="nav-btn-download">⬇️ ডাউনলোড</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <!-- Header Section -->
     <header>
@@ -310,7 +406,7 @@
     </header>
 
     <!-- What's New Section -->
-    <section>
+    <section id="changelog">
         <div class="container">
             <h2 class="section-title">🚀 মেগা আপডেটে নতুন কী থাকছে?</h2>
             <div class="whats-new-box">
@@ -326,7 +422,7 @@
     </section>
 
     <!-- Features Section -->
-    <section class="bg-white">
+    <section class="bg-white" id="features">
         <div class="container">
             <h2 class="section-title">✨ মূল ফিচারসমূহ (Core Features)</h2>
             <div class="features-grid">
@@ -388,7 +484,7 @@
     </section>
 
     <!-- Bangla Toolbox Ecosystem -->
-    <section class="bg-white">
+    <section class="bg-white" id="toolbox">
         <div class="container">
             <div class="toolbox-box">
                 <img src="https://banglakeyboardcs.github.io/assets/banglatoolbox.png" alt="Bangla Toolbox">
@@ -453,7 +549,7 @@
     </section>
 
     <!-- Footer / Contact -->
-    <footer>
+    <footer id="contact">
         <div class="container">
             <div class="contact-info">
                 <h3 style="color: white; margin-bottom: 20px;">📞 যোগাযোগ ও সাপোর্ট</h3>
