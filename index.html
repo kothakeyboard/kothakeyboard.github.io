@@ -18,6 +18,7 @@
             --light: #F8FAFC;
             --gray: #64748B;
             --border: #E2E8F0;
+            --danger: #EF4444;
         }
 
         body {
@@ -38,7 +39,7 @@
         /* Header / Hero Section */
         header {
             background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
-            padding: 60px 0;
+            padding: 60px 0 40px;
             text-align: center;
             border-bottom: 1px solid var(--border);
         }
@@ -49,6 +50,7 @@
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             margin-bottom: 30px;
+            border: 2px solid var(--border);
         }
 
         h1 {
@@ -109,6 +111,16 @@
             border-radius: 20px;
             font-size: 0.9rem;
         }
+        .badge-new {
+            background: var(--danger);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
 
         /* Sections */
         section {
@@ -126,6 +138,22 @@
             color: var(--dark);
         }
 
+        /* What's New Section */
+        .whats-new-box {
+            background: #fef2f2;
+            border: 2px solid #fecaca;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+        .whats-new-box ul {
+            font-size: 1.1rem;
+            color: #991b1b;
+        }
+        .whats-new-box li {
+            margin-bottom: 10px;
+        }
+
         /* Features Grid */
         .features-grid {
             display: grid;
@@ -140,6 +168,7 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             border: 1px solid var(--border);
             transition: transform 0.3s;
+            text-align: center;
         }
 
         .feature-card:hover {
@@ -148,9 +177,10 @@
         }
 
         .feature-icon {
-            width: 50px;
-            height: 50px;
+            width: 64px;
+            height: 64px;
             margin-bottom: 15px;
+            object-fit: contain;
         }
 
         .feature-title {
@@ -222,6 +252,12 @@
             text-align: center;
         }
 
+        .toolbox-box img {
+            width: 80px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+        }
+
         .toolbox-box a {
             color: #38bdf8;
             text-decoration: none;
@@ -255,22 +291,39 @@
     <!-- Header Section -->
     <header>
         <div class="container">
-            <!-- ডামি ব্যানার লিংক, এখানে আপনার গিটহাবের এসেটস ফোল্ডারের লিংক বসাবেন -->
-            <img src="assets/banner.png" alt="Bangla Keyboard CS Banner" class="hero-banner">
+            <!-- ব্যানার সরাসরি গিটহাব থেকে লোড হচ্ছে -->
+            <img src="https://banglakeyboardcs.github.io/assets/Bangla_Keyboard_CS_Cover.png" alt="Bangla Keyboard CS Banner" class="hero-banner">
             
-            <h1>Bangla Keyboard CS (বাংলা কীবোর্ড সিএস)</h1>
-            <p class="tagline">উইন্ডোজের জন্য সবচেয়ে আধুনিক, ফাস্ট, লাইটওয়েট এবং স্মার্ট বাংলা কীবোর্ড!<br>
-            <i>স্মার্ট সাজেশন, ওয়াইফাই ভয়েস টাইপিং এবং ফাইল ট্রান্সফার সাপোর্টসহ।</i></p>
+            <h1>Bangla Keyboard CS</h1>
+            <p class="tagline">উইন্ডোজের জন্য সবচেয়ে আধুনিক, ফাস্ট এবং স্মার্ট বাংলা কীবোর্ড!<br>
+            <i>এখন <b>৯ লক্ষ+ শব্দের ডিকশনারি</b> এবং <b>আরবি ভয়েস টাইপিং</b> সাপোর্টসহ।</i></p>
             
             <a href="https://drive.google.com/drive/u/0/folders/1saIx04GYJ0nCtGrFedzpL8nfdeU7Phu4" target="_blank" class="btn btn-primary">⬇️ ডাউনলোড করুন (Download)</a>
             
             <div class="badges">
+                <span class="badge badge-new">🔥 মেগা আপডেট (v3.0)</span>
                 <span class="badge">💻 Windows 10 | 11</span>
                 <span class="badge">🆓 Freemium</span>
-                <span class="badge">⚡ Fast & Lightweight</span>
+                <span class="badge">⚡ Zero-Allocation Fast</span>
             </div>
         </div>
     </header>
+
+    <!-- What's New Section -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">🚀 মেগা আপডেটে নতুন কী থাকছে?</h2>
+            <div class="whats-new-box">
+                <ul>
+                    <li><b>কার্সরের নিচেই সাজেশন (Huge Fix):</b> Chrome, Edge, VS Code বা মেসেঞ্জারে সাজেশন বার এখন থেকে ঠিক আপনার কার্সরের নিচেই শো করবে!</li>
+                    <li><b>আরবি কীবোর্ড ও ভয়েস টাইপিং:</b> নতুন আরবি লেআউট এবং পিসিতে নিখুঁত আরবি ভয়েস টাইপিং করার সুবিধা যুক্ত হয়েছে।</li>
+                    <li><b>৯ লক্ষ+ শব্দের ডিকশনারি:</b> স্মার্ট সাজেশনকে আরও নির্ভুল করতে বাংলা ও ইংরেজি মিলে ১৬ মেগাবাইটের বিশাল ডিকশনারি যুক্ত করা হয়েছে।</li>
+                    <li><b>ইউনিজয় (Unijoy) অন-স্ক্রিন কীবোর্ড:</b> অন-স্ক্রিন কীবোর্ডে ইউনিজয় লেআউট যুক্ত করা হয়েছে, যেখানে মোবাইলের মতো <b>লং-প্রেস</b> করে শিফট ক্যারেক্টার টাইপ করা যায়।</li>
+                    <li><b>সুপারফাস্ট পারফরম্যান্স:</b> C++ মেমোরি ডিটাচ এবং র‍্যাম অপ্টিমাইজেশন করে কীবোর্ডের স্পিডকে করা হয়েছে অবিশ্বাস্য রকম ফাস্ট!</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
     <!-- Features Section -->
     <section class="bg-white">
@@ -279,34 +332,39 @@
             <div class="features-grid">
                 
                 <div class="feature-card">
-                    <!-- ডামি আইকন লিংক -->
-                    <img src="assets/icon-suggestion.png" alt="Suggestion" class="feature-icon">
+                    <img src="https://banglakeyboardcs.github.io/assets/Phonetic.png" alt="Suggestion" class="feature-icon">
                     <div class="feature-title">স্মার্ট অটো-সাজেশন</div>
-                    <p>৯ লক্ষ+ শব্দের বিশাল ডিকশনারি সাপোর্ট। টাইপ করার সাথে সাথেই নির্ভুল সাজেশন এবং নেক্সট-ওয়ার্ড প্রেডিকশন, যা আপনার টাইপিং স্পিড বহুগুণ বাড়িয়ে দেবে।</p>
+                    <p>৯ লক্ষ ২১ হাজার+ শব্দের বিশাল ডিকশনারি! টাইপ করার সাথে সাথেই নির্ভুল সাজেশন যা আপনার টাইপিং স্পিড বহুগুণ বাড়িয়ে দেবে।</p>
                 </div>
 
                 <div class="feature-card">
-                    <img src="assets/icon-voice.png" alt="Voice Typing" class="feature-icon">
-                    <div class="feature-title">ওয়াইফাই ভয়েস টাইপিং (যেকোনো ভাষা)</div>
-                    <p>পিসিতে কোনো মাইক্রোফোন ছাড়াই, মোবাইল দিয়ে স্ক্যান করে পিসিতে টাইপ করুন। মোবাইলের কীবোর্ড দিয়ে <b>পৃথিবীর যেকোনো ভাষায়</b> কথা বললে তা সরাসরি পিসিতে টাইপ হয়ে যাবে!</p>
+                    <img src="https://banglakeyboardcs.github.io/assets/voice.png" alt="Voice Typing" class="feature-icon">
+                    <div class="feature-title">ওয়াইফাই ভয়েস টাইপিং</div>
+                    <p>পিসিতে কোনো মাইক্রোফোন ছাড়াই মোবাইল দিয়ে স্ক্যান করে টাইপ করুন। বাংলা, ইংরেজি ও <b>আরবিসহ</b> পৃথিবীর যেকোনো ভাষায় কথা বললে পিসিতে টাইপ হবে!</p>
                 </div>
 
                 <div class="feature-card">
-                    <img src="assets/icon-file.png" alt="File Transfer" class="feature-icon">
-                    <div class="feature-title">লোকাল ফাইল ট্রান্সফার</div>
-                    <p>কোনো ক্যাবল বা ইন্টারনেট ডেটা খরচ ছাড়াই পিসি থেকে মোবাইলে বা মোবাইল থেকে পিসিতে ওয়াইফাইয়ের মাধ্যমে অতি দ্রুতগতিতে ফাইল আদান-প্রদান করুন।</p>
+                    <img src="https://banglakeyboardcs.github.io/assets/icon_uni.png" alt="OSK" class="feature-icon">
+                    <div class="feature-title">অন-স্ক্রিন কীবোর্ড (OSK)</div>
+                    <p>যাদের ফিজিক্যাল কীবোর্ডে সমস্যা তাদের জন্য বাংলা, ইংরেজি, আরবি এবং লং-প্রেস সুবিধাযুক্ত <b>ইউনিজয়</b> অন-স্ক্রিন কীবোর্ড।</p>
                 </div>
 
                 <div class="feature-card">
-                    <img src="assets/icon-converter.png" alt="Converter" class="feature-icon">
+                    <img src="https://banglakeyboardcs.github.io/assets/icon_converter.png" alt="Converter" class="feature-icon">
                     <div class="feature-title">লাইভ কনভার্টার</div>
-                    <p>ইউনিকোড থেকে বিজয় (ANSI) এবং বিজয় থেকে ইউনিকোডে রিয়েল-টাইম কনভার্ট করার সুবিধা। সাথে থাকছে আনডু, রিডু এবং কাস্টম প্রিসেট।</p>
+                    <p>ইউনিকোড থেকে বিজয় (ANSI) এবং বিজয় থেকে ইউনিকোডে রিয়েল-টাইম কনভার্ট করার সুবিধা। সাথে থাকছে আনডু ও কাস্টম প্রিসেট।</p>
                 </div>
 
                 <div class="feature-card">
-                    <img src="assets/icon-layout.png" alt="Layouts" class="feature-icon">
+                    <img src="https://banglakeyboardcs.github.io/assets/icon_arabic.png" alt="Layouts" class="feature-icon">
                     <div class="feature-title">মাল্টিপল ও কাস্টম লেআউট</div>
-                    <p>বাংলা (ইউনিকোড, আন্সি, ফনেটিক), ইংরেজি এবং <b>আরবি</b> লেআউট। সাথে নিজের ইচ্ছেমতো শর্টকাট ও যুক্তবর্ণ দিয়ে ৩টি কাস্টম লেআউট তৈরির সুবিধা।</p>
+                    <p>বাংলা (ইউনিকোড, আন্সি, ফনেটিক), ইংরেজি এবং আরবি লেআউট। সাথে নিজের ইচ্ছেমতো শর্টকাট দিয়ে ৩টি কাস্টম লেআউট তৈরির সুবিধা।</p>
+                </div>
+
+                <div class="feature-card">
+                    <img src="https://banglakeyboardcs.github.io/assets/File_Transfer.png" alt="File Transfer" class="feature-icon">
+                    <div class="feature-title">লোকাল ফাইল ট্রান্সফার</div>
+                    <p>কোনো ক্যাবল বা ইন্টারনেট ডেটা খরচ ছাড়াই পিসি থেকে মোবাইলে বা মোবাইল থেকে পিসিতে ওয়াইফাইয়ের মাধ্যমে ফাইল আদান-প্রদান করুন।</p>
                 </div>
 
             </div>
@@ -316,14 +374,14 @@
     <!-- Voice Typing Section -->
     <section>
         <div class="container">
-            <h2 class="section-title">🎙️ ক্রস-ল্যাঙ্গুয়েজ ভয়েস টাইপিং (কিভাবে কাজ করে?)</h2>
+            <h2 class="section-title">🎙️ ক্রস-ল্যাঙ্গুয়েজ ভয়েস টাইপিং (কীভাবে কাজ করে?)</h2>
             <div class="steps">
                 <p>মোবাইল দিয়ে পিসিতে রিয়েল-টাইম ভয়েস টাইপ করার এক যুগান্তকারী ফিচার! এটি যেকোনো ভাষায় কাজ করে:</p>
                 <ol>
                     <li>কীবোর্ডের ট্রে মেনু বা ডাবল-ক্লিক করে <b>ওয়াইফাই ভয়েস টাইপিং</b> অপশনটি চালু করুন।</li>
                     <li>স্ক্রিনে আসা <b>QR কোডটি</b> আপনার মোবাইল দিয়ে স্ক্যান করুন (পিসি ও মোবাইল একই ওয়াইফাই বা হটস্পটে থাকতে হবে)।</li>
                     <li>মোবাইলের ব্রাউজারে একটি পেজ ওপেন হবে। সেখানে থাকা টেক্সটবক্সে ক্লিক করে আপনার <b>মোবাইলের কীবোর্ডের মাইক (🎤) আইকনে</b> চাপ দিন।</li>
-                    <li>এবার আপনি <b>বাংলা, ইংরেজি, আরবি, হিন্দি, স্প্যানিশ—যেকোনো ভাষায়</b> কথা বলুন। মোবাইলের কীবোর্ড যা ইনপুট দিবে, সেটি চোখের পলকে আপনার পিসিতে টাইপ হয়ে যাবে!</li>
+                    <li>এবার আপনি <b>বাংলা, ইংরেজি, আরবি, হিন্দি—যেকোনো ভাষায়</b> কথা বলুন। মোবাইলের কীবোর্ড যা ইনপুট দিবে, সেটি চোখের পলকে আপনার পিসিতে টাইপ হয়ে যাবে!</li>
                 </ol>
             </div>
         </div>
@@ -333,6 +391,7 @@
     <section class="bg-white">
         <div class="container">
             <div class="toolbox-box">
+                <img src="https://banglakeyboardcs.github.io/assets/banglatoolbox.png" alt="Bangla Toolbox">
                 <h2 style="color: white; margin-top: 0;">🧰 Bangla Toolbox ইকোসিস্টেম</h2>
                 <p style="font-size: 1.2rem; margin-bottom: 20px;">এই কীবোর্ডটি সরাসরি আমাদের ওয়েব প্ল্যাটফর্ম <b>Bangla Toolbox</b> এর সাথে কানেক্টেড।</p>
                 <p>আপনি চাইলে ব্রাউজার থেকে সরাসরি আমাদের ওয়েব প্ল্যাটফর্ম Bangla Toolbox ভিজিট করে Bangla Keyboard CS এর সাথে কানেক্ট হয়ে ভয়েস টাইপিং এবং ফাইল ট্রান্সফার করতে পারবেন। এছাড়াও বাংলা নিয়ে কাজ করার জন্য কনভার্টার, টাইপ টেস্ট, টেক্সট এডিটরসহ আরও <b>৫০+ প্রয়োজনীয় টুলস</b> রয়েছে সেখানে!</p>
@@ -347,8 +406,8 @@
         <div class="container">
             <h2 class="section-title">👑 প্রিমিয়াম লাইসেন্স ও প্রাইসিং</h2>
             <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px;">
-                কীবোর্ডের বেসিক ফিচারগুলো সবার জন্য <b>সম্পূর্ণ ফ্রি</b>। তবে লাইভ ভয়েস টাইপিং এবং প্রো ফিচারগুলো পরিচালনার জন্য আমাদের একটি নামমাত্র মূল্যের <b>ফ্রিমিয়াম/ডোনেশন ভিত্তিক প্রাইসিং</b> রয়েছে। <br>
-                আমাদের প্রাইসিং মডেল অত্যন্ত সহজ: <b>"১ টাকায় ১ দিন"</b>।
+                কীবোর্ডের বেসিক ফিচারগুলো সবার জন্য <b>সম্পূর্ণ ফ্রি</b>। তবে প্রতিদিন ৫ মিনিটের বেশি লাইভ ভয়েস টাইপিং ব্যবহারের জন্য আমাদের একটি নামমাত্র মূল্যের <b>ফ্রিমিয়াম/ডোনেশন ভিত্তিক প্রাইসিং</b> রয়েছে। <br>
+                <b>🎁 স্পেশাল অফার: প্রতি শুক্রবার সবার জন্য ভয়েস টাইপিং সম্পূর্ণ ফ্রি!</b>
             </p>
 
             <table class="pricing-table">
@@ -363,27 +422,27 @@
                 <tbody>
                     <tr>
                         <td><b>অর্ধ-বার্ষিক</b></td>
-                        <td>৬ মাস (১৮০ দিন)</td>
+                        <td>৬ মাস (১৮0 দিন)</td>
                         <td><b>১৫০ টাকা</b></td>
-                        <td>প্রো ফিচার অ্যাক্সেস</td>
+                        <td>আনলিমিটেড ভয়েস টাইপিং</td>
                     </tr>
                     <tr>
                         <td><b>বার্ষিক</b></td>
                         <td>১ বছর (৩৬৫ দিন)</td>
                         <td><b>৩০০ টাকা</b></td>
-                        <td>প্রো ফিচার অ্যাক্সেস</td>
+                        <td>আনলিমিটেড ভয়েস টাইপিং</td>
                     </tr>
                     <tr>
                         <td><b>দ্বি-বার্ষিক</b></td>
                         <td>২ বছর (৭৩০ দিন)</td>
                         <td><b>৫০০ টাকা</b></td>
-                        <td>প্রো ফিচার অ্যাক্সেস</td>
+                        <td>আনলিমিটেড ভয়েস টাইপিং</td>
                     </tr>
                     <tr class="lifetime-row">
                         <td><b>লাইফটাইম 🌟</b></td>
                         <td>আজীবন (Lifetime)</td>
                         <td><b>১,০০০ টাকা</b></td>
-                        <td>লাইফটাইম আপডেট ও সাপোর্ট</td>
+                        <td>লাইফটাইম সাপোর্ট ও আনলিমিটেড অ্যাক্সেস</td>
                     </tr>
                 </tbody>
             </table>
