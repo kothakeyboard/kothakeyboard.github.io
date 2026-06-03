@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Bangla Keyboard CS</title>
+    
+    <link rel="icon" type="image/png" href="https://banglakeyboardcs.github.io/assets/Bangla_Keyboard_CS.png">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0078D7;
+            --primary-hover: #005A9E;
+            --success: #10B981;
+            --dark: #1E293B;
+            --light: #F8FAFC;
+            --gray: #64748B;
+            --border: #E2E8F0;
+            --bg-color: #f1f5f9;
+            --sidebar-width: 280px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--dark);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: white;
+            border-right: 1px solid var(--border);
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+        }
+
+        .sidebar.collapsed {
+            transform: translateX(-100%);
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background-color: var(--dark);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .sidebar-header img { height: 28px; border-radius: 4px; }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-menu li {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 15px 20px;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: #e0f2fe;
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+        }
+
+        /* --- Main Content --- */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            height: 100vh;
+            overflow-y: auto;
+            transition: margin-left 0.3s ease;
+            background: var(--bg-color);
+        }
+
+        .main-content.expanded {
+            margin-left: 0;
+        }
+
+        .top-navbar {
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 900;
+        }
+
+        .toggle-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.2s;
+        }
+        .toggle-btn:hover { background: var(--primary-hover); }
+
+        .content-container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h1, h2, h3 { color: var(--primary); }
+        h1 { font-size: 2.2rem; border-bottom: 2px solid var(--border); padding-bottom: 10px; }
+        h2 { font-size: 1.6rem; margin-top: 40px; padding-bottom: 5px; border-bottom: 1px solid var(--border); }
+        p, li { font-size: 1.1rem; line-height: 1.7; color: #334155; }
+        
+        .highlight-box {
+            background: #fef2f2;
+            border-left: 4px solid var(--danger);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        /* --- Interactive Keyboard CSS --- */
+        .keyboard-container {
+            background: #cbd5e1;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .key {
+            width: 48px;
+            height: 48px;
+            background: white;
+            border: 1px solid #94a3b8;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            box-shadow: 0 3px 0 #94a3b8;
+            transition: all 0.1s;
+            user-select: none;
+            position: relative;
+        }
+
+        .key:active {
+            transform: translateY(3px);
+            box-shadow: 0 0 0 #94a3b8;
+        }
+
+        .key .shift { color: #94a3b8; font-size: 12px; font-weight: bold; position: absolute; top: 4px; left: 6px; }
+        .key .normal { color: #0f172a; font-size: 16px; font-weight: bold; position: absolute; bottom: 4px; right: 6px; }
+
+        /* When Shift is Active */
+        .shifted .key .shift { color: #0f172a; font-size: 16px; bottom: 4px; right: 6px; top: auto; left: auto; }
+        .shifted .key .normal { color: #94a3b8; font-size: 12px; top: 4px; left: 6px; bottom: auto; right: auto; }
+
+        .key-action {
+            width: auto;
+            padding: 0 15px;
+            background: #e2e8f0;
+            font-weight: bold;
+            color: #334155;
+            cursor: pointer;
+        }
+
+        .key-action.active { background: #3b82f6; color: white; box-shadow: 0 3px 0 #1d4ed8; }
+
+        @media (max-width: 768px) {
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.mobile-open { transform: translateX(0); }
+            .main-content { margin-left: 0; }
+            .content-container { padding: 20px; margin: 15px; }
+            .key { width: 35px; height: 40px; font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <a href="index.html" class="sidebar-header">
+            <img src="https://banglakeyboardcs.github.io/assets/Bangla_Keyboard_CS.png" alt="Logo">
+            Bangla Keyboard CS
+        </a>
+        <ul class="sidebar-menu">
+            <li><a href="#intro">১. পরিচিতি ও সুবিধা</a></li>
+            <li><a href="#install">২. ডাউনলোড ও ইনস্টল</a></li>
+            <li><a href="#shortcuts">৩. কীবোর্ড শর্টকাট</a></li>
+            <li><a href="#layouts">৪. লেআউট ম্যাপিং (Interactive)</a></li>
+            <li><a href="#voice">৫. ওয়াইফাই ভয়েস টাইপিং</a></li>
+            <li><a href="#tools">৬. অন্যান্য টুলস (ফাইল ট্রান্সফার)</a></li>
+            <li><a href="#pricing">৭. লাইসেন্স ও প্রাইসিং</a></li>
+            <li><a href="#contact">৮. যোগাযোগ ও সাপোর্ট</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <div class="top-navbar">
+            <button class="toggle-btn" onclick="toggleSidebar()">
+                ☰ মেনু
+            </button>
+            <span style="margin-left: 15px; font-weight: bold; font-size: 1.1rem;">অফিশিয়াল ডকুমেন্টেশন</span>
+        </div>
+
+        <div class="content-container">
+            
+            <section id="intro">
+                <h1>📖 Bangla Keyboard CS - User Manual</h1>
+                <p>স্বাগতম! <b>Bangla Keyboard CS</b> উইন্ডোজ (Windows 10/11) এর জন্য তৈরি করা এযাবৎকালের সবচেয়ে আধুনিক, ফাস্ট এবং ফিচার-প্যাকড বাংলা কীবোর্ড। ৯ লক্ষ+ শব্দের বিশাল ডিকশনারি, স্মার্ট অটো-সাজেশন, আরবি লেআউট, ক্রস-ল্যাঙ্গুয়েজ ওয়াইফাই ভয়েস টাইপিং এবং জিরো-অ্যালোকেশন মেমোরি ম্যানেজমেন্ট— সবকিছু মিলিয়ে এটি আপনার টাইপিংকে করবে সুপারফাস্ট!</p>
+                
+                <h3>🌟 অন্যান্য কীবোর্ড থেকে এটি কেন সেরা?</h3>
+                <ul>
+                    <li><b>কার্সরের পজিশন ফিক্স:</b> ক্রোম, এজ, ভিএস কোড, মেসেঞ্জারে সাজেশন বার এখন থেকে ঠিক আপনার কার্সরের নিচেই শো করবে!</li>
+                    <li><b>ডিকশনারি কাস্টমাইজেশন:</b> ভুল কোনো শব্দ সাজেশনে আসলে তার ওপর <b>রাইট-ক্লিক (Right-Click)</b> করেই ডিকশনারি থেকে তা মুছে ফেলা যায়।</li>
+                    <li><b>সুপারফাস্ট পারফরম্যান্স:</b> C++ এর নেটিভ Range-loop ব্যবহারের কারণে এটি র‍্যাম একদমই টানে না।</li>
+                </ul>
+            </section>
+
+            <section id="install">
+                <h2>📥 ২. ডাউনলোড এবং ইনস্টলেশন</h2>
+                <ol>
+                    <li><a href="https://drive.google.com/drive/u/0/folders/1saIx04GYJ0nCtGrFedzpL8nfdeU7Phu4" target="_blank" style="color:var(--primary); font-weight:bold;">এখান থেকে</a> সফটওয়্যারটি ডাউনলোড করুন।</li>
+                    <li>ডাউনলোড করা <b>.exe</b> ফাইলটিতে ডাবল ক্লিক করুন। (উইন্ডোজ ডিফেন্ডার ওয়ার্নিং দিলে <code>More Info > Run Anyway</code> তে ক্লিক করুন)।</li>
+                    <li>ইনস্টল হয়ে গেলে টাস্কবারের নিচে ডানদিকে (System Tray) কীবোর্ডের আইকন দেখতে পাবেন। সেখানে ক্লিক করলেই মূল উইন্ডো চলে আসবে।</li>
+                </ol>
+            </section>
+
+            <section id="shortcuts">
+                <h2>⌨️ ৩. কীবোর্ড শর্টকাট</h2>
+                <ul>
+                    <li><b>Ctrl + 1 :</b> বাংলা ইউনিকোড</li>
+                    <li><b>Ctrl + 2 :</b> ইংরেজি</li>
+                    <li><b>Ctrl + 3 :</b> বিজয় আন্সি</li>
+                    <li><b>Ctrl + 4 :</b> বাংলা ফনেটিক</li>
+                    <li><b>Ctrl + 5 :</b> আরবি</li>
+                    <li><b>Ctrl + Space :</b> বাংলা ও ইংরেজির মাঝে সুইচ (Toggle) করতে।</li>
+                </ul>
+            </section>
+
+            <section id="layouts">
+                <h2>🗺️ ৪. লেআউট ম্যাপিং (Interactive)</h2>
+                <p>নিচের বাটনগুলোতে ক্লিক করে কীবোর্ডের শিফট (Shift) ক্যারেক্টারগুলো দেখে নিতে পারেন।</p>
+
+                <!-- BIJOY LAYOUT -->
+                <h3>🔸 বিজয় (Bijoy Unicode/ANSI)</h3>
+                <div class="keyboard-container" id="kb-bijoy">
+                    <div class="keyboard-row">
+                        <div class="key"><span class="shift">!</span><span class="normal">১</span></div>
+                        <div class="key"><span class="shift">@</span><span class="normal">২</span></div>
+                        <div class="key"><span class="shift">#</span><span class="normal">৩</span></div>
+                        <div class="key"><span class="shift">৳</span><span class="normal">৪</span></div>
+                        <div class="key"><span class="shift">%</span><span class="normal">৫</span></div>
+                        <div class="key"><span class="shift">^</span><span class="normal">৬</span></div>
+                        <div class="key"><span class="shift">ঁ</span><span class="normal">৭</span></div>
+                        <div class="key"><span class="shift">*</span><span class="normal">৮</span></div>
+                        <div class="key"><span class="shift">(</span><span class="normal">৯</span></div>
+                        <div class="key"><span class="shift">)</span><span class="normal">০</span></div>
+                    </div>
+                    <div class="keyboard-row">
+                        <div class="key"><span class="shift">ং</span><span class="normal">ঙ</span></div>
+                        <div class="key"><span class="shift">য়</span><span class="normal">য</span></div>
+                        <div class="key"><span class="shift">ঢ</span><span class="normal">ড</span></div>
+                        <div class="key"><span class="shift">ফ</span><span class="normal">প</span></div>
+                        <div class="key"><span class="shift">ঠ</span><span class="normal">ট</span></div>
+                        <div class="key"><span class="shift">ছ</span><span class="normal">চ</span></div>
+                        <div class="key"><span class="shift">ঝ</span><span class="normal">জ</span></div>
+                        <div class="key"><span class="shift">ঞ</span><span class="normal">হ</span></div>
+                        <div class="key"><span class="shift">ঘ</span><span class="normal">গ</span></div>
+                        <div class="key"><span class="shift">ঢ়</span><span class="normal">ড়</span></div>
+                    </div>
+                    <div class="keyboard-row">
+                        <div class="key"><span class="shift">র্</span><span class="normal">ৃ</span></div>
+                        <div class="key"><span class="shift">ূ</span><span class="normal">ু</span></div>
+                        <div class="key"><span class="shift">ী</span><span class="normal">ি</span></div>
+                        <div class="key"><span class="shift">অ</span><span class="normal">া</span></div>
+                        <div class="key"><span class="shift">।</span><span class="normal">্</span></div>
+                        <div class="key"><span class="shift">ভ</span><span class="normal">ব</span></div>
+                        <div class="key"><span class="shift">খ</span><span class="normal">ক</span></div>
+                        <div class="key"><span class="shift">থ</span><span class="normal">ত</span></div>
+                        <div class="key"><span class="shift">ধ</span><span class="normal">দ</span></div>
+                    </div>
+                    <div class="keyboard-row">
+                        <button class="key key-action shift-btn" onclick="toggleShift('kb-bijoy', this)">Shift ⇧</button>
+                        <div class="key"><span class="shift">্য</span><span class="normal">্র</span></div>
+                        <div class="key"><span class="shift">ৗ</span><span class="normal">ও</span></div>
+                        <div class="key"><span class="shift">ৈ</span><span class="normal">ে</span></div>
+                        <div class="key"><span class="shift">ল</span><span class="normal">র</span></div>
+                        <div class="key"><span class="shift">ণ</span><span class="normal">ন</span></div>
+                        <div class="key"><span class="shift">ষ</span><span class="normal">স</span></div>
+                        <div class="key"><span class="shift">শ</span><span class="normal">ম</span></div>
+                        <button class="key key-action shift-btn" onclick="toggleShift('kb-bijoy', this)">Shift ⇧</button>
+                    </div>
+                </div>
+
+                <!-- PHONETIC LAYOUT -->
+                <h3 style="margin-top:40px;">🔸 বাংলা ফনেটিক (Phonetic)</h3>
+                <p>আপনি ইংরেজিতে যা উচ্চারণ করে লিখবেন, তাই বাংলায় টাইপ হবে। যুক্তবর্ণ লিখতে মাঝে কোনো স্পেস বা লিংক লাগবে না। যেমন: <code>shikkha</code> = শিক্ষা।</p>
+                <div class="keyboard-container" id="kb-phonetic">
+                    <div class="keyboard-row">
+                        <div class="key"><span class="shift">Q (্)</span><span class="normal">q</span></div>
+                        <div class="key"><span class="shift">W</span><span class="normal">w (ব)</span></div>
+                        <div class="key"><span class="shift">E (ঈ)</span><span class="normal">e (এ)</span></div>
+                        <div class="key"><span class="shift">R (ড়)</span><span class="normal">r (র)</span></div>
+                        <div class="key"><span class="shift">T (ট)</span><span class="normal">t (ত)</span></div>
+                        <div class="key"><span class="shift">Y (য়)</span><span class="normal">y (য)</span></div>
+                        <div class="key"><span class="shift">U (ঊ)</span><span class="normal">u (উ)</span></div>
+                        <div class="key"><span class="shift">I (ঈ)</span><span class="normal">i (ই)</span></div>
+                        <div class="key"><span class="shift">O</span><span class="normal">o (ও)</span></div>
+                        <div class="key"><span class="shift">P (ফ)</span><span class="normal">p (প)</span></div>
+                    </div>
+                    <div class="keyboard-row">
+                        <div class="key"><span class="shift">A (ঁ)</span><span class="normal">a (আ)</span></div>
+                        <div class="key"><span class="shift">S (ষ)</span><span class="normal">s (স)</span></div>
+                        <div class="key"><span class="shift">D (ড)</span><span class="normal">d (দ)</span></div>
+                        <div class="key"><span class="shift">F</span><span class="normal">f (ফ)</span></div>
+                        <div class="key"><span class="shift">G (ঘ)</span><span class="normal">g (গ)</span></div>
+                        <div class="key"><span class="shift">H</span><span class="normal">h (হ)</span></div>
+                        <div class="key"><span class="shift">J (ঝ)</span><span class="normal">j (জ)</span></div>
+                        <div class="key"><span class="shift">K (খ)</span><span class="normal">k (ক)</span></div>
+                        <div class="key"><span class="shift">L</span><span class="normal">l (ল)</span></div>
+                    </div>
+                    <div class="keyboard-row">
+                        <button class="key key-action shift-btn" onclick="toggleShift('kb-phonetic', this)">Shift ⇧</button>
+                        <div class="key"><span class="shift">Z</span><span class="normal">z (য)</span></div>
+                        <div class="key"><span class="shift">X</span><span class="normal">x (ক্স)</span></div>
+                        <div class="key"><span class="shift">C (ছ)</span><span class="normal">c (চ)</span></div>
+                        <div class="key"><span class="shift">V</span><span class="normal">v (ভ)</span></div>
+                        <div class="key"><span class="shift">B</span><span class="normal">b (ব)</span></div>
+                        <div class="key"><span class="shift">N (ণ)</span><span class="normal">n (ন)</span></div>
+                        <div class="key"><span class="shift">M</span><span class="normal">m (ম)</span></div>
+                        <button class="key key-action shift-btn" onclick="toggleShift('kb-phonetic', this)">Shift ⇧</button>
+                    </div>
+                </div>
+
+                <!-- ARABIC LAYOUT -->
+                <h3 style="margin-top:40px;">🔸 আরবি (Arabic)</h3>
+                <p>ইংরেজি অক্ষরের সাথে মিল রেখে স্ট্যান্ডার্ড ফোনেটিক আরবি। <b>হরকত:</b> e=َ , i=ِ , u=ُ , o=ْ , v=ّ</p>
+                <div class="keyboard-container" id="kb-arabic">
+                    <div class="keyboard-row">
+                        <div class="key"><span class="shift">ق</span><span class="normal">q</span></div>
+                        <div class="key"><span class="shift">و</span><span class="normal">w</span></div>
+                        <div class="key"><span class="shift">أ</span><span class="normal">e (َ)</span></div>
+                        <div class="key"><span class="shift">ر</span><span class="normal">r</span></div>
+                        <div class="key"><span class="shift">ة</span><span class="normal">t</span></div>
+                        <div class="key"><span class="shift">ى</span><span class="normal">y (ي)</span></div>
+                        <div class="key"><span class="shift">ٗ</span><span class="normal">u (ُ)</span></div>
+                        <div class="key"><span class="shift">إ</span><span class="normal">i (ِ)</span></div>
+                        <div class="key"><span class="shift">ئ</span><span class="normal">o (ْ)</span></div>
+                        <div class="key"><span class="shift">ظ</span><span class="normal">p (ط)</span></div>
+                    </div>
+                    <div class="keyboard-row">
+                        <div class="key"><span class="shift">ٰ</span><span class="normal">a (ا)</span></div>
+                        <div class="key"><span class="shift">ش</span><span class="normal">s (س)</span></div>
+                        <div class="key"><span class="shift">ذ</span><span class="normal">d (د)</span></div>
+                        <div class="key"><span class="shift">ف</span><span class="normal">f</span></div>
+                        <div class="key"><span class="shift">غ</span><span class="normal">g</span></div>
+                        <div class="key"><span class="shift">ه</span><span class="normal">h (ح)</span></div>
+                        <div class="key"><span class="shift">ج</span><span class="normal">j</span></div>
+                        <div class="key"><span class="shift">خ</span><span class="normal">k (ك)</span></div>
+                        <div class="key"><span class="shift">ل</span><span class="normal">l</span></div>
+                    </div>
+                    <div class="keyboard-row">
+                        <button class="key key-action shift-btn" onclick="toggleShift('kb-arabic', this)">Shift ⇧</button>
+                        <div class="key"><span class="shift">ث</span><span class="normal">z (ز)</span></div>
+                        <div class="key"><span class="shift">ء</span><span class="normal">x</span></div>
+                        <div class="key"><span class="shift">ض</span><span class="normal">c (ص)</span></div>
+                        <div class="key"><span class="shift">ّ</span><span class="normal">v</span></div>
+                        <div class="key"><span class="shift">ب</span><span class="normal">b</span></div>
+                        <div class="key"><span class="shift">ن</span><span class="normal">n</span></div>
+                        <div class="key"><span class="normal">m (م)</span></div>
+                        <button class="key key-action shift-btn" onclick="toggleShift('kb-arabic', this)">Shift ⇧</button>
+                    </div>
+                </div>
+
+            </section>
+
+            <section id="voice">
+                <h2>🎙️ ৫. ওয়াইফাই ভয়েস টাইপিং</h2>
+                <div class="highlight-box">
+                    <p>পিসিতে মাইক্রোফোন ছাড়াই মোবাইল দিয়ে স্ক্যান করে বাংলা, ইংরেজি ও আরবিসহ যেকোনো ভাষায় কথা বললে পিসিতে টাইপ হবে!</p>
+                    <ol>
+                        <li>কীবোর্ডের ট্রে মেনু থেকে <b>ওয়াইফাই ভয়েস টাইপিং</b> চালু করুন।</li>
+                        <li>স্ক্রিনে আসা QR কোডটি মোবাইল দিয়ে স্ক্যান করুন।</li>
+                        <li>মোবাইলে ওপেন হওয়া পেজে <b>মাইক (🎤) আইকনে</b> চাপ দিয়ে কথা বলুন।</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="tools">
+                <h2>🧰 ৬. অন্যান্য টুলস</h2>
+                <ul>
+                    <li><b>লোকাল ফাইল ট্রান্সফার:</b> কোনো ক্যাবল বা ডেটা খরচ ছাড়াই পিসি থেকে মোবাইলে ফাইল আদান প্রদান করুন (ওয়াইফাই রাউটারের স্পিডে)।</li>
+                    <li><b>লাইভ কনভার্টার:</b> ইউনিকোড ↔ বিজয় আন্সি (SutonnyMJ) লাইভ কনভার্ট করুন।</li>
+                    <li><b>কাস্টম লেআউট:</b> সেটিংস থেকে নিজের ইচ্ছেমতো ৩টি কীবোর্ড লেআউট তৈরি করুন।</li>
+                </ul>
+            </section>
+
+            <section id="pricing">
+                <h2>💳 ৭. লাইসেন্স ও প্রাইসিং</h2>
+                <p>বেসিক সব ফিচার (টাইপিং, কনভার্টার, লেআউট ক্রিয়েটর, ডিকশনারি) সবার জন্য <b>সম্পূর্ণ ফ্রি</b>। তবে আনলিমিটেড পিসি ভয়েস টাইপিং এর জন্য ডোনেশন-ভিত্তিক লাইসেন্সিং সিস্টেম রয়েছে:</p>
+                <ul>
+                    <li><b>প্রতিদিন ৫ মিনিট ও প্রতি শুক্রবার:</b> সম্পূর্ণ ফ্রি!</li>
+                    <li><b>অর্ধ-বার্ষিক (৬ মাস):</b> ১৫০ টাকা</li>
+                    <li><b>বার্ষিক (১ বছর):</b> ৩০০ টাকা</li>
+                    <li><b>লাইফটাইম 🌟:</b> ১,০০০ টাকা (ওয়ান-টাইম পেমেন্ট)</li>
+                </ul>
+            </section>
+
+            <section id="contact">
+                <h2>📞 ৮. যোগাযোগ ও সাপোর্ট</h2>
+                <p>যেকোনো সমস্যা, মতামত অথবা প্রিমিয়াম লাইসেন্স ক্রয়ের জন্য যোগাযোগ করুন:</p>
+                <ul>
+                    <li><b>WhatsApp:</b> <a href="https://wa.me/+8801778472964" target="_blank">+88 01778472964</a></li>
+                    <li><b>ইমেইল:</b> mdshahiduzzamansifat@gmail.com</li>
+                    <li><b>ফেসবুক:</b> <a href="https://www.facebook.com/mdsifatfbid" target="_blank">fb.com/mdsifatfbid</a></li>
+                </ul>
+            </section>
+            
+        </div>
+    </main>
+
+    <script>
+        // Sidebar Toggle Logic
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('collapsed');
+            document.getElementById('sidebar').classList.toggle('mobile-open');
+            document.getElementById('mainContent').classList.toggle('expanded');
+        }
+
+        // Active link highlight on scroll
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".sidebar-menu a");
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href").includes(current)) {
+                    link.classList.add("active");
+                }
+            });
+        });
+
+        // Keyboard Shift Logic
+        function toggleShift(keyboardId, btnElement) {
+            const kb = document.getElementById(keyboardId);
+            kb.classList.toggle('shifted');
+            
+            // Toggle active state for all shift buttons in this keyboard
+            const buttons = kb.querySelectorAll('.shift-btn');
+            buttons.forEach(btn => btn.classList.toggle('active'));
+        }
+    </script>
+
+</body>
+</html>
