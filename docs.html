@@ -217,6 +217,7 @@
                         <li><b>যুক্তবর্ণ ভাঙা:</b> যদি দুটি ব্যঞ্জনের মাঝে যুক্তবর্ণ না চান, তবে তাদের মাঝে <b><span class="code-inline">o</span></b> (ও) চাপুন। এটি একটি ইনভিজিবল কার হিসেবে কাজ করে। যেমন: <span class="code-inline">kko</span> = ক্ক, কিন্তু <span class="code-inline">koko</span> = কক।</li>
                         <li><b>ZWNJ বা জয়েনার ভাঙা:</b> আপনি চাইলে <span class="code-inline">//</span> (ডাবল স্ল্যাশ) অথবা <span class="code-inline">~</span> (Tilde) কী চেপেও যুক্তবর্ণ ভাঙতে পারেন। যেমন: <span class="code-inline">kor//te</span> = কর‌তে।</li>
                         <li><b>হসন্ত + ZWNJ:</b> দুটি ব্যঞ্জনের মাঝে স্পেস না দিয়েও আলাদা দেখাতে চাইলে <span class="code-inline">``</span> (ডাবল ব্যাকটিক) চাপুন। এটি 'হসন্ত + ZWNJ' বসাবে। যেমন: <span class="code-inline">kos``meTiks</span> = কস্‌মেটিকস্।</li>
+                        <li><b>সাধারণ স্ল্যাশ:</b> ৩ বার স্লাশ <span class="code-inline">///</span> দিলে সেটি সাধারণ <span class="code-inline">//</span> হিসেবে প্রিন্ট হবে।</li>
                     </ul>
 
                     <h4>২. হসন্ত, রেফ এবং র-ফলা</h4>
@@ -229,7 +230,7 @@
 
                     <h4>৩. য-ফলা এবং ব-ফলা</h4>
                     <ul>
-                        <li><b>য-ফলা (্য):</b> ব্যঞ্জনবর্ণের পর <b><span class="code-inline">z</span></b> বা <b><span class="code-inline">y</span></b> লিখলে য-ফলা হবে। যেমন: <span class="code-inline">kz</span> = ক্য।</li>
+                        <li><b>য-ফলা (্য):</b> ব্যঞ্জনবর্ণের পর <b><span class="code-inline">z</span></b>, <b><span class="code-inline">y</span></b> বা <b><span class="code-inline">Z</span> (Shift+Z)</b> লিখলে য-ফলা হবে। যেমন: <span class="code-inline">kz</span> = ক্য। (Z সবসময় ফোর্সড য-ফলা হিসেবে কাজ করবে)।</li>
                         <li><b>ব-ফলা (্ব):</b> ব্যঞ্জনবর্ণের পর <b><span class="code-inline">w</span></b> লিখলে ব-ফলা হবে। যেমন: <span class="code-inline">sw</span> = স্ব। (কিন্তু শুধু 'w' লিখলে 'ও' হবে)।</li>
                     </ul>
 
@@ -247,9 +248,9 @@
                         <li><b>দাঁড়ি এবং ফুলস্টপ:</b> একটি ডট <span class="code-inline">.</span> দিলে বাংলা দাঁড়ি (।) আসবে। আর ইংরেজি ফুলস্টপ লিখতে চাইলে ডাবল ডট <span class="code-inline">..</span> দিন।</li>
                         <li><b>বিসর্গ এবং কোলন:</b> একটি কোলন <span class="code-inline">:</span> দিলে বিসর্গ (ঃ) আসবে। আর ইংরেজি কোলন লিখতে চাইলে ডাবল কোলন <span class="code-inline">::</span> দিন।</li>
                         <li><b>টাকা (৳):</b> ডলার সাইন <span class="code-inline">$</span> চাপলে টাকার চিহ্ন (৳) আসবে।</li>
-                        <li><b>খণ্ড-ত (ৎ):</b> <span class="code-inline">TH</span> অথবা <span class="code-inline">\</span> (Backslash) অথবা <span class="code-inline">*t</span> ।</li>
+                        <li><b>খণ্ড-ত (ৎ):</b> <span class="code-inline">TH</span> অথবা <span class="code-inline">*t</span> লিখুন।</li>
                         <li><b>অনুস্বার (ং):</b> <span class="code-inline">ng</span> ।</li>
-                        <li><b>বিসর্গ (ঃ):</b> <span class="code-inline">:</span> অথবা <span class="code-inline">|</span> (Pipe) অথবা <span class="code-inline">hh</span> অথবা <span class="code-inline">*l</span> ।</li>
+                        <li><b>বিসর্গ (ঃ):</b> <span class="code-inline">:</span> অথবা <span class="code-inline">hh</span> অথবা <span class="code-inline">*l</span> ।</li>
                         <li><b>চন্দ্রবিন্দু (ঁ):</b> <span class="code-inline">^</span> অথবা <span class="code-inline">A</span> (Capital A) অথবা <span class="code-inline">*a</span> ।</li>
                     </ul>
                 </div>
@@ -257,7 +258,7 @@
 
             <section id="layouts">
                 <h2>🗺️ ৫. লেআউট ম্যাপিং (Interactive Keyboard)</h2>
-                <p>নিচের বাটনগুলোতে ক্লিক করে কীবোর্ডের শিফট (Shift) ক্যারেক্টারগুলো দেখে নিতে পারেন। Tilde (<code>~</code>) এবং Backslash (<code>\</code>) কীগুলো যথাস্থানে যুক্ত করা হয়েছে।</p>
+                <p>নিচের বাটনগুলোতে ক্লিক করে কীবোর্ডের শিফট (Shift) ক্যারেক্টারগুলো দেখে নিতে পারেন।</p>
 
                 <!-- BIJOY LAYOUT -->
                 <h3>🔸 বিজয় (Bijoy Unicode/ANSI)</h3>
@@ -352,7 +353,7 @@
                         <div class="key"><span class="shift">P (ফ)</span><span class="normal">p (প)</span></div>
                         <div class="key"><span class="shift">{</span><span class="normal">[</span></div>
                         <div class="key"><span class="shift">}</span><span class="normal">]</span></div>
-                        <div class="key" title="Khanda-Ta / Bisorgo"><span class="shift">| (ঃ)</span><span class="normal">\ (ৎ)</span></div>
+                        <div class="key"><span class="shift">|</span><span class="normal">\</span></div>
                     </div>
                     <div class="keyboard-row row-offset-2">
                         <div class="key"><span class="shift">A (ঁ)</span><span class="normal">a (আ)</span></div>
@@ -369,8 +370,8 @@
                     </div>
                     <div class="keyboard-row row-offset-3">
                         <button class="key key-action shift-btn" onclick="toggleShift('kb-phonetic', this)">Shift ⇧</button>
-                        <div class="key"><span class="shift">Z</span><span class="normal">z (য)</span></div>
-                        <div class="key"><span class="shift">X</span><span class="normal">x (ক্স)</span></div>
+                        <div class="key"><span class="shift">Z (্য)</span><span class="normal">z (য)</span></div>
+                        <div class="key"><span class="shift">X (ক্স)</span><span class="normal">x (ক্স)</span></div>
                         <div class="key"><span class="shift">C (ছ)</span><span class="normal">c (চ)</span></div>
                         <div class="key"><span class="shift">V</span><span class="normal">v (ভ)</span></div>
                         <div class="key"><span class="shift">B</span><span class="normal">b (ব)</span></div>
@@ -402,44 +403,44 @@
                         <div class="key"><span class="shift">+</span><span class="normal">=</span></div>
                     </div>
                     <div class="keyboard-row row-offset-1">
-                        <div class="key"><span class="shift">ق</span><span class="normal">q</span></div>
-                        <div class="key"><span class="shift">و</span><span class="normal">w</span></div>
-                        <div class="key"><span class="shift">أ</span><span class="normal">e (َ)</span></div>
-                        <div class="key"><span class="shift">ر</span><span class="normal">r</span></div>
-                        <div class="key"><span class="shift">ة</span><span class="normal">t</span></div>
-                        <div class="key"><span class="shift">ى</span><span class="normal">y (ي)</span></div>
-                        <div class="key"><span class="shift">ٗ</span><span class="normal">u (ُ)</span></div>
-                        <div class="key"><span class="shift">إ</span><span class="normal">i (ِ)</span></div>
-                        <div class="key"><span class="shift">ئ</span><span class="normal">o (ْ)</span></div>
-                        <div class="key"><span class="shift">ظ</span><span class="normal">p (ط)</span></div>
+                        <div class="key"><span class="shift">Q</span><span class="normal">ق</span></div>
+                        <div class="key"><span class="shift">ؤ</span><span class="normal">و</span></div>
+                        <div class="key"><span class="shift">أ</span><span class="normal">َ</span></div>
+                        <div class="key"><span class="shift">R</span><span class="normal">ر</span></div>
+                        <div class="key"><span class="shift">ة</span><span class="normal">ت</span></div>
+                        <div class="key"><span class="shift">ى</span><span class="normal">ي</span></div>
+                        <div class="key"><span class="shift">ٗ</span><span class="normal">ُ</span></div>
+                        <div class="key"><span class="shift">إ</span><span class="normal">ِ</span></div>
+                        <div class="key"><span class="shift">ئ</span><span class="normal">ْ</span></div>
+                        <div class="key"><span class="shift">ظ</span><span class="normal">ط</span></div>
                         <div class="key"><span class="shift">{</span><span class="normal">[</span></div>
                         <div class="key"><span class="shift">}</span><span class="normal">]</span></div>
                         <div class="key"><span class="shift">|</span><span class="normal">\</span></div>
                     </div>
                     <div class="keyboard-row row-offset-2">
-                        <div class="key"><span class="shift">ٰ</span><span class="normal">a (ا)</span></div>
-                        <div class="key"><span class="shift">ش</span><span class="normal">s (س)</span></div>
-                        <div class="key"><span class="shift">ذ</span><span class="normal">d (د)</span></div>
-                        <div class="key"><span class="shift">ف</span><span class="normal">f</span></div>
-                        <div class="key"><span class="shift">غ</span><span class="normal">g</span></div>
-                        <div class="key"><span class="shift">ه</span><span class="normal">h (ح)</span></div>
-                        <div class="key"><span class="shift">ج</span><span class="normal">j</span></div>
-                        <div class="key"><span class="shift">خ</span><span class="normal">k (ك)</span></div>
-                        <div class="key"><span class="shift">ل</span><span class="normal">l</span></div>
+                        <div class="key"><span class="shift">ٰ</span><span class="normal">ا</span></div>
+                        <div class="key"><span class="shift">ش</span><span class="normal">س</span></div>
+                        <div class="key"><span class="shift">ذ</span><span class="normal">د</span></div>
+                        <div class="key"><span class="shift">ڤ</span><span class="normal">ف</span></div>
+                        <div class="key"><span class="shift">ڠ</span><span class="normal">غ</span></div>
+                        <div class="key"><span class="shift">ه</span><span class="normal">ح</span></div>
+                        <div class="key"><span class="shift">چ</span><span class="normal">ج</span></div>
+                        <div class="key"><span class="shift">خ</span><span class="normal">ك</span></div>
+                        <div class="key"><span class="shift">L</span><span class="normal">ل</span></div>
                         <div class="key"><span class="shift">:</span><span class="normal">;</span></div>
-                        <div class="key"><span class="shift">"</span><span class="normal">'</span></div>
+                        <div class="key"><span class="shift">"</span><span class="normal">ع</span></div>
                     </div>
                     <div class="keyboard-row row-offset-3">
                         <button class="key key-action shift-btn" onclick="toggleShift('kb-arabic', this)">Shift ⇧</button>
-                        <div class="key"><span class="shift">ث</span><span class="normal">z (ز)</span></div>
-                        <div class="key"><span class="shift">ء</span><span class="normal">x</span></div>
-                        <div class="key"><span class="shift">ض</span><span class="normal">c (ص)</span></div>
-                        <div class="key"><span class="shift">ّ</span><span class="normal">v</span></div>
-                        <div class="key"><span class="shift">ب</span><span class="normal">b</span></div>
-                        <div class="key"><span class="shift">ن</span><span class="normal">n</span></div>
-                        <div class="key"><span class="normal">m (م)</span></div>
-                        <div class="key"><span class="shift"><</span><span class="normal">,</span></div>
-                        <div class="key"><span class="shift">></span><span class="normal">.</span></div>
+                        <div class="key"><span class="shift">ث</span><span class="normal">ز</span></div>
+                        <div class="key"><span class="shift">ڬ</span><span class="normal">ء</span></div>
+                        <div class="key"><span class="shift">ض</span><span class="normal">ص</span></div>
+                        <div class="key"><span class="shift">ۏ</span><span class="normal">ّ</span></div>
+                        <div class="key"><span class="shift">B</span><span class="normal">ب</span></div>
+                        <div class="key"><span class="shift">ڽ</span><span class="normal">ن</span></div>
+                        <div class="key"><span class="shift">M</span><span class="normal">م</span></div>
+                        <div class="key"><span class="shift"><</span><span class="normal">ٔ</span></div>
+                        <div class="key"><span class="shift">></span><span class="normal">ٕ</span></div>
                         <div class="key"><span class="shift">?</span><span class="normal">/</span></div>
                         <button class="key key-action shift-btn" onclick="toggleShift('kb-arabic', this)">Shift ⇧</button>
                     </div>
