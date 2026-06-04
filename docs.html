@@ -208,19 +208,20 @@
 
             <section id="phonetic-guide">
                 <h2>💡 ৪. ফনেটিক টাইপিং গাইড ও মডিফায়ার</h2>
-                <p>ফনেটিক টাইপিংয়ের ক্ষেত্রে যুক্তবর্ণ, কার এবং স্পেশাল ক্যারেক্টার লেখার কিছু স্মার্ট নিয়ম রয়েছে:</p>
+                <p>ফনেটিক টাইপিংয়ের ক্ষেত্রে যুক্তবর্ণ, কার এবং স্পেশাল ক্যারেক্টার লেখার কিছু স্মার্ট নিয়ম রয়েছে। নিচে সবগুলো শর্টকাট এবং ট্রিকস তুলে ধরা হলো:</p>
                 
                 <div class="highlight-box">
                     <h4>১. যুক্তবর্ণ তৈরি ও ভাঙা (Zero Width Non-Joiner)</h4>
                     <ul>
                         <li><b>যুক্তবর্ণ তৈরি:</b> পাশাপাশি দুটি ব্যঞ্জনবর্ণ লিখলে তা স্বয়ংক্রিয়ভাবে যুক্ত হয়ে যায়। যেমন: <span class="code-inline">shikkha</span> = শিক্ষা।</li>
                         <li><b>যুক্তবর্ণ ভাঙা:</b> যদি দুটি ব্যঞ্জনের মাঝে যুক্তবর্ণ না চান, তবে তাদের মাঝে <b><span class="code-inline">o</span></b> (ও) চাপুন। এটি একটি ইনভিজিবল কার হিসেবে কাজ করে। যেমন: <span class="code-inline">kko</span> = ক্ক, কিন্তু <span class="code-inline">koko</span> = কক।</li>
-                        <li><b>ZWNJ (নন-জয়েনার):</b> আপনি চাইলে Tilde <span class="code-inline">~</span> কী চেপেও যুক্তবর্ণ ভাঙতে পারেন। এটি মাইক্রোসফট ওয়ার্ডে লেটার সেপারেটর হিসেবে কাজ করে।</li>
+                        <li><b>ZWNJ বা জয়েনার ভাঙা:</b> আপনি চাইলে <span class="code-inline">//</span> (ডাবল স্ল্যাশ) অথবা <span class="code-inline">~</span> (Tilde) কী চেপেও যুক্তবর্ণ ভাঙতে পারেন। যেমন: <span class="code-inline">kor//te</span> = কর‌তে।</li>
+                        <li><b>হসন্ত + ZWNJ:</b> দুটি ব্যঞ্জনের মাঝে স্পেস না দিয়েও আলাদা দেখাতে চাইলে <span class="code-inline">``</span> (ডাবল ব্যাকটিক) চাপুন। এটি 'হসন্ত + ZWNJ' বসাবে। যেমন: <span class="code-inline">kos``meTiks</span> = কস্‌মেটিকস্।</li>
                     </ul>
 
                     <h4>২. হসন্ত, রেফ এবং র-ফলা</h4>
                     <ul>
-                        <li><b>হসন্ত (্):</b> হসন্ত দিতে <b><span class="code-inline">q</span></b> অথবা <b><span class="code-inline">`</span></b> (Backtick/Tilde Key) ব্যবহার করুন।</li>
+                        <li><b>হসন্ত (্):</b> হসন্ত দিতে <b><span class="code-inline">q</span></b> অথবা <b><span class="code-inline">`</span></b> (Backtick) অথবা <b><span class="code-inline">*g</span></b> ব্যবহার করুন।</li>
                         <li><b>র-ফলা (্র):</b> ব্যঞ্জনবর্ণের <b>পরে</b> 'r' লিখলে র-ফলা হবে। যেমন: <span class="code-inline">kro</span> = ক্র।</li>
                         <li><b>রেফ (র্):</b> ব্যঞ্জনবর্ণের <b>আগে</b> 'rr' লিখলে রেফ হবে। যেমন: <span class="code-inline">rrk</span> = র্ক।</li>
                         <li><b>ঋ-কার (ৃ):</b> 'rri' লিখলে ঋ-কার হবে। যেমন: <span class="code-inline">krri</span> = কৃ।</li>
@@ -232,13 +233,24 @@
                         <li><b>ব-ফলা (্ব):</b> ব্যঞ্জনবর্ণের পর <b><span class="code-inline">w</span></b> লিখলে ব-ফলা হবে। যেমন: <span class="code-inline">sw</span> = স্ব। (কিন্তু শুধু 'w' লিখলে 'ও' হবে)।</li>
                     </ul>
 
-                    <h4>৪. স্পেশাল ক্যারেক্টার ও ম্যাক্রো</h4>
+                    <h4>৪. স্মার্ট ম্যাক্রো ও স্পেশাল ক্যারেক্টার</h4>
                     <ul>
-                        <li><b>খণ্ড-ত (ৎ):</b> <span class="code-inline">TH</span> অথবা <span class="code-inline">\</span> (Backslash)।</li>
+                        <li><b>ক্স / এক্স (x/X):</b> শব্দের শুরুতে 'x' বা 'X' লিখলে হবে <b>এক্স</b> (যেমন: <span class="code-inline">xray</span> = এক্সরে)। কিন্তু শব্দের মাঝে বা শেষে লিখলে হবে <b>ক্স</b> (যেমন: <span class="code-inline">box</span> = বক্স)।</li>
+                        <li><b>জ-ফলা আকার (্যা/অ্যা):</b> এর জন্য <b><span class="code-inline">ae</span></b> ব্যবহার করুন। যেমন: <span class="code-inline">gyan</span> = জ্ঞান, <span class="code-inline">byatha</span> = ব্যাথা।</li>
+                        <li><b>অ্যা / এ্যা:</b> <span class="code-inline">aya</span> = অ্যা, <span class="code-inline">eya</span> = এ্যা।</li>
+                        <li><b>র‌্যা:</b> <span class="code-inline">rya</span> অথবা <span class="code-inline">rza</span> লিখলে র‌্যা হবে।</li>
+                        <li><b>ওয়া / ওয়ে / ওয়্যা:</b> <span class="code-inline">wa</span> = ওয়া, <span class="code-inline">we</span> = ওয়ে, <span class="code-inline">wae</span> = ওয়্যা।</li>
+                    </ul>
+
+                    <h4>৫. যতিচিহ্ন (Punctuation) ও অল্টারনেট শর্টকাট</h4>
+                    <ul>
+                        <li><b>দাঁড়ি এবং ফুলস্টপ:</b> একটি ডট <span class="code-inline">.</span> দিলে বাংলা দাঁড়ি (।) আসবে। আর ইংরেজি ফুলস্টপ লিখতে চাইলে ডাবল ডট <span class="code-inline">..</span> দিন।</li>
+                        <li><b>বিসর্গ এবং কোলন:</b> একটি কোলন <span class="code-inline">:</span> দিলে বিসর্গ (ঃ) আসবে। আর ইংরেজি কোলন লিখতে চাইলে ডাবল কোলন <span class="code-inline">::</span> দিন।</li>
+                        <li><b>টাকা (৳):</b> ডলার সাইন <span class="code-inline">$</span> চাপলে টাকার চিহ্ন (৳) আসবে।</li>
+                        <li><b>খণ্ড-ত (ৎ):</b> <span class="code-inline">TH</span> অথবা <span class="code-inline">\</span> (Backslash) অথবা <span class="code-inline">*t</span> ।</li>
                         <li><b>অনুস্বার (ং):</b> <span class="code-inline">ng</span> ।</li>
-                        <li><b>বিসর্গ (ঃ):</b> <span class="code-inline">:</span> অথবা <span class="code-inline">|</span> (Pipe) অথবা <span class="code-inline">hh</span> ।</li>
-                        <li><b>চন্দ্রবিন্দু (ঁ):</b> <span class="code-inline">^</span> অথবা <span class="code-inline">A</span> (Capital A)।</li>
-                        <li><b>স্মার্ট ম্যাক্রো:</b> <span class="code-inline">rya</span> = র‌্যা, <span class="code-inline">wa</span> = ওয়া, <span class="code-inline">eya</span> = এ্যা।</li>
+                        <li><b>বিসর্গ (ঃ):</b> <span class="code-inline">:</span> অথবা <span class="code-inline">|</span> (Pipe) অথবা <span class="code-inline">hh</span> অথবা <span class="code-inline">*l</span> ।</li>
+                        <li><b>চন্দ্রবিন্দু (ঁ):</b> <span class="code-inline">^</span> অথবা <span class="code-inline">A</span> (Capital A) অথবা <span class="code-inline">*a</span> ।</li>
                     </ul>
                 </div>
             </section>
