@@ -191,19 +191,30 @@
         .feature-icon { width: 64px; height: 64px; margin-bottom: 15px; object-fit: contain; }
         .feature-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 10px; color: var(--primary); }
 
-        /* Interfaces (Screenshots) Grid */
+/* Interfaces (Screenshots) Grid */
         .screenshot-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
         }
+        
         .screenshot-card {
             background: var(--light);
-            border: 1px solid var(--border);
+            /* এখানে হালকা বর্ডার কালার দেওয়া হয়েছে (Primary color 25% opacity) */
+            border: 1px solid rgba(0, 120, 215, 0.25); 
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease; /* স্মুথ এনিমেশনের জন্য */
         }
+
+        /* মাউস রাখলে বর্ডার একটু গাঢ় হবে এবং বক্সটি ভেসে উঠবে */
+        .screenshot-card:hover {
+            border-color: rgba(0, 120, 215, 0.5); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transform: translateY(-4px);
+        }
+
         .screenshot-card img {
             width: 100%;
             height: auto;
