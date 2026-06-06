@@ -102,11 +102,10 @@
             margin-left: var(--sidebar-width); 
             flex: 1; 
             height: 100vh; 
-            overflow-y: auto; /* এই ডিভেই স্ক্রলিং হচ্ছে */
+            overflow-y: auto; 
             transition: margin-left 0.3s ease; 
             background: var(--bg-color);
-            scroll-behavior: smooth; /* স্মুথ স্ক্রলিং */
-            scroll-padding-top: 80px; /* ফিক্স: ন্যাভবারের নিচে ঢাকা পড়বে না */
+            scroll-behavior: smooth;
         }
         .main-content.expanded { margin-left: 0; }
 
@@ -281,6 +280,7 @@
                 <p>উইন্ডোজের জন্য তৈরি করা এযাবৎকালের সবচেয়ে আধুনিক, ফাস্ট এবং ফিচার-প্যাকড বাংলা কীবোর্ড। ৯ লক্ষ+ শব্দের বিশাল ডিকশনারি, স্মার্ট অটো-সাজেশন, ক্রস-ল্যাঙ্গুয়েজ ওয়াইফাই ভয়েস টাইপিং এবং জিরো-অ্যালোকেশন মেমোরি ম্যানেজমেন্ট— সবকিছু মিলিয়ে এটি আপনার টাইপিংকে করবে সুপারফাস্ট!</p>
             </section>
 
+            <!-- Feature Section -->
             <section id="features">
                 <h2>🚀 ২. কেন এই কীবোর্ডটি আলাদা? (Features)</h2>
                 <p>অন্যান্য সাধারণ কীবোর্ডের তুলনায় Bangla Keyboard CS সম্পূর্ণ নতুন প্রযুক্তিতে তৈরি, যা আপনার পিসির পারফরম্যান্স ঠিক রেখে সর্বোচ্চ ফিচার প্রদান করে।</p>
@@ -691,18 +691,36 @@
             document.getElementById('mainContent').classList.toggle('expanded');
         }
 
-        // Close sidebar on mobile when a menu link is clicked
+        // Custom JS to handle smooth scrolling inside the specific div container
         const navLinks = document.querySelectorAll(".sidebar-menu a");
+        const mainContent = document.getElementById("mainContent");
+
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    document.getElementById('sidebar').classList.remove('mobile-open');
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); // Stop default jumping
+                
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    // Close sidebar on mobile
+                    if (window.innerWidth <= 768) {
+                        document.getElementById('sidebar').classList.remove('mobile-open');
+                    }
+                    
+                    // Scroll exactly where we need inside the specific div
+                    mainContent.scrollTo({
+                        top: targetSection.offsetTop - 80, // Offset for the fixed top navbar
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL safely
+                    history.replaceState(null, null, '#' + targetId);
                 }
             });
         });
 
         // Active link highlight on scroll
-        const mainContent = document.getElementById("mainContent");
         const sections = document.querySelectorAll("section");
 
         mainContent.addEventListener("scroll", () => {
