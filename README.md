@@ -1,7 +1,7 @@
 🔗 **লাইভ লিংক:** [kothakeyboard.github.io](https://kothakeyboard.github.io/)
 
 <p align="center">
-  <img src="https://i.ibb.cc/jTR32D8P/Banner.jpg" alt="Bangla Keyboard CS Banner" width="100%">
+  <img src="https://i.ibb.cc/jTR32D8P/Banner.jpg" alt="Kotha Keyboard Banner" width="100%">
 </p>
 
 <h1 align="center">Bangla Keyboard (Kotha)/Kotha Keyboard</h1>
@@ -60,7 +60,7 @@
 
 ## 🧰 Bangla Toolbox ইকোসিস্টেম
 এই কীবোর্ডটি সরাসরি আমাদের ওয়েব প্ল্যাটফর্ম **Bangla Toolbox** এর সাথে কানেক্টেড।
-আপনি চাইলে ব্রাউজার থেকে সরাসরি [banglatoolbox.github.io](https://banglatoolbox.github.io/) এ ভিজিট করে Bangla Keyboard CS এর সাথে কানেক্ট করে ভয়েস টাইপিং এবং ফাইল ট্রান্সফার করতে পারবেন। 
+আপনি চাইলে ব্রাউজার থেকে সরাসরি [banglatoolbox.github.io](https://banglatoolbox.github.io/) এ ভিজিট করে Kotha Keyboard এর সাথে কানেক্ট করে ভয়েস টাইপিং এবং ফাইল ট্রান্সফার করতে পারবেন। 
 
 > 💡 **Bangla Toolbox**-এ বাংলা নিয়ে কাজ করার জন্য কনভার্টার, টাইপ টেস্ট, টেক্সট এডিটরসহ আরও **৫০+ প্রয়োজনীয় টুলস** রয়েছে।
 
@@ -84,7 +84,7 @@
 
 ## 📥 ডাউনলোড এবং ইন্সটলেশন
 1. নিচের গুগল ড্রাইভ লিংক থেকে সফটওয়্যারটির লেটেস্ট ভার্সন ডাউনলোড করুন।
-2. জিপ ফাইলটি আনজিপ করে `Bangla Keyboard CS.exe` রান করুন।
+2. জিপ ফাইলটি আনজিপ করে `Kotha Keyboard Installer.exe` রান করুন।
 3. উইন্ডোজের ডানপাশের নিচের কর্নারে (System Tray) কীবোর্ডের আইকন দেখতে পাবেন।
 
 🔗 **[ডাউনলোড লিংক (Google Drive)](https://drive.google.com/drive/u/0/folders/1saIx04GYJ0nCtGrFedzpL8nfdeU7Phu4)**
