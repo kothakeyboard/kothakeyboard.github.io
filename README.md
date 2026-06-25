@@ -1,7 +1,7 @@
 🔗 **লাইভ লিংক:** [kothakeyboard.github.io](https://kothakeyboard.github.io/)
 
 <p align="center">
-  <img src="assets/Bangla_Keyboard_CS_Cover.png" alt="Kotha Keyboard Banner" width="100%">
+  <img src="assets/Bangla_Keyboard_CS_Cover.png" alt="Kotha Keyboard Banner" width="50%">
 </p>
 
 <h1 align="center">Bangla Keyboard (Kotha)/Kotha Keyboard</h1>
