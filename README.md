@@ -4,7 +4,7 @@
   <img src="https://i.ibb.cc/jTR32D8P/Banner.jpg" alt="Bangla Keyboard CS Banner" width="100%">
 </p>
 
-<h1 align="center">Bangla Keyboard CS (বাংলা কীবোর্ড সিএস)/BCS Keyboard (বিসিএস কীবোর্ড)</h1>
+<h1 align="center">Kotha Keyboard/Bangla Keyboard (Kotha)/কথা কীবোর্ড/বাংলা কীবোর্ড (কথা)</h1>
 
 <p align="center">
   <b>উইন্ডোজের জন্য সবচেয়ে আধুনিক, ফাস্ট, লাইটওয়েট এবং স্মার্ট বাংলা কীবোর্ড!</b><br>
