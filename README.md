@@ -1,4 +1,4 @@
-🔗 **লাইভ লিংক:** [kothakeyboard.github.io](https://banglakeyboardcs.github.io/)
+🔗 **লাইভ লিংক:** [kothakeyboard.github.io](https://kothakeyboard.github.io/)
 
 <p align="center">
   <img src="https://i.ibb.cc/jTR32D8P/Banner.jpg" alt="Bangla Keyboard CS Banner" width="100%">
