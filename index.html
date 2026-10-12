@@ -149,15 +149,151 @@
             border-bottom: 1px solid var(--border);
         }
 
+        /* --- New Hero Flex Layout with Slider --- */
+        .hero-top-layout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
         .hero-banner {
             width: 50%;
-            max-width: 50%;
             height: auto;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            margin-bottom: 5px;
             border: 2px solid var(--border);
+            flex-shrink: 0;
         }
+
+        /* Feature Slider CSS (Updated for Sliding Animation) */
+        .hero-slider-wrapper {
+            width: 50%;
+            height: 280px; /* Fixed height for uniformity */
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 120, 215, 0.08);
+            border: 1px solid rgba(0, 120, 215, 0.15);
+            position: relative;
+            overflow: hidden; /* Important for sliding effect */
+        }
+
+        .slider-content {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth sliding animation */
+        }
+
+        .slide {
+            flex: 0 0 100%; /* Takes exactly 100% of the wrapper width */
+            padding: 30px 45px;
+            box-sizing: border-box; /* Keeps padding inside width */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .slide h3 {
+            color: var(--primary);
+            margin: 0 0 10px 0;
+            font-size: 1.4rem;
+            line-height: 1.3;
+        }
+
+        .slide p {
+            color: var(--dark);
+            font-size: 1.05rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .slide p b {
+            color: #d97706; /* Highlight color for emphasis */
+        }
+
+        /* Slider Navigators */
+        .slider-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 120, 215, 0.8);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 1rem;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .slider-nav-btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .slider-prev { left: 10px; }
+        .slider-next { right: 10px; }
+
+        /* Show navigators on hover */
+        .hero-slider-wrapper:hover .slider-nav-btn {
+            opacity: 1;
+        }
+
+        /* Slider Dots */
+        .slider-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .dot {
+            height: 8px;
+            width: 8px;
+            margin: 0 4px;
+            background-color: #cbd5e1;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.3s;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: var(--primary);
+            transform: scale(1.3);
+        }
+
+        @media (max-width: 900px) {
+            .hero-top-layout { flex-direction: column; }
+            .hero-banner { width: 80%; }
+            .hero-slider-wrapper { width: 90%; }
+            .slide { padding: 20px 35px; }
+            .hero-slider-wrapper:hover .slider-nav-btn { opacity: 1; } /* Always accessible or easy to tap on mobile */
+        }
+
+        @media (max-width: 600px) {
+            .hero-banner, .hero-slider-wrapper { width: 100%; }
+            .hero-slider-wrapper { height: 300px; }
+        }
+
+        /* --- End New Layout --- */
 
         h1 { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; }
         .tagline { font-size: 1.2rem; color: var(--gray); margin-bottom: 30px; }
@@ -331,8 +467,68 @@
     <!-- Header Section -->
     <header>
         <div class="container">
-            <img src="https://kothakeyboard.github.io/assets/Bangla_Keyboard_CS_Cover.png" alt="Kotha Keyboard Banner" class="hero-banner">
-            
+            <!-- Flex Layout for Banner & Slider -->
+            <div class="hero-top-layout">
+                <img src="https://kothakeyboard.github.io/assets/Bangla_Keyboard_CS_Cover.png" alt="Kotha Keyboard Banner" class="hero-banner">
+                
+                <!-- Feature Text Slider -->
+                <div class="hero-slider-wrapper" id="heroSlider" onmouseenter="pauseSlider()" onmouseleave="resumeSlider()">
+                    
+                    <div class="slider-content" id="sliderContent">
+                        <!-- Slide 1 -->
+                        <div class="slide">
+                            <div class="slide-icon">🅰️</div>
+                            <h3>নতুন 'কথা এনকোডিং'</h3>
+                            <p><b>"Kothamala"</b> ফন্টের মাধ্যমে এখন ইউনিকোড, আন্সি ও ইংরেজি সব এক ফন্টেই লেখা সম্ভব! ফন্ট পরিবর্তনের ঝামেলা চিরতরে শেষ।</p>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="slide">
+                            <div class="slide-icon">🤖</div>
+                            <h3>Kotha AI Hub</h3>
+                            <p>কীবোর্ডেই এখন <b>AI এর শক্তি!</b> বানান শুদ্ধিকরণ, গ্রামার কারেকশন, OCR (স্ক্রীন থেকে টেক্সট এক্সট্রাক্ট) এবং বিল্ট-ইন ক্যালকুলেটর।</p>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="slide">
+                            <div class="slide-icon">🎙️</div>
+                            <h3>ওয়াইফাই ভয়েস টাইপিং</h3>
+                            <p>পিসিতে কোনো মাইক্রোফোন ছাড়াই মোবাইল দিয়ে স্ক্যান করে <b>বাংলা, ইংরেজি, আরবিসহ</b> পৃথিবীর যেকোনো ভাষায় নিখুঁত টাইপ করুন!</p>
+                        </div>
+                        <!-- Slide 4 -->
+                        <div class="slide">
+                            <div class="slide-icon">📚</div>
+                            <h3>৯ লক্ষ+ শব্দের ডিকশনারি</h3>
+                            <p>বিশাল ডিকশনারির সাহায্যে <b>স্মার্ট অটো-সাজেশন</b> এবং <b>লাইভ স্পেল চেকার!</b> ভুল লিখলেও সঠিক আউটপুট অটোমেটিক আসবে।</p>
+                        </div>
+                        <!-- Slide 5 -->
+                        <div class="slide">
+                            <div class="slide-icon">📋</div>
+                            <h3>অ্যাডভান্সড প্রো ক্লিপবোর্ড</h3>
+                            <p>টেক্সট হিস্ট্রির পাশাপাশি এখন <b>কপি করা ছবিও (Screenshot/Image)</b> কীবোর্ডের ক্লিপবোর্ডে সেভ থাকবে। সাথে থাকছে ইমোজি প্যানেল!</p>
+                        </div>
+                        <!-- Slide 6 -->
+                        <div class="slide">
+                            <div class="slide-icon">⚡</div>
+                            <h3>এমএস ওয়ার্ড ফিক্স ও কনভার্টার</h3>
+                            <p><b>'কস্‌মেটিক্‌স' বা 'উদ্‌ঘাটন'</b> লেখার সময় আন্সি ফন্ট ভেঙে যাওয়ার দীর্ঘদিনের বাগ ফিক্স! সাথে বিল্ট-ইন লাইভ টেক্সট কনভার্টার।</p>
+                        </div>
+                    </div>
+
+                    <!-- Navigators -->
+                    <button class="slider-nav-btn slider-prev" onclick="prevSlide()">&#10094;</button>
+                    <button class="slider-nav-btn slider-next" onclick="nextSlide()">&#10095;</button>
+
+                    <!-- Dots -->
+                    <div class="slider-dots">
+                        <span class="dot active" onclick="currentSlide(0)"></span>
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                        <span class="dot" onclick="currentSlide(5)"></span>
+                    </div>
+                </div>
+            </div>
+
             <h2 style="font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; font-weight: bold;">Bangla Keyboard (Kotha)</h2>
             <p class="tagline">উইন্ডোজের জন্য সবচেয়ে আধুনিক, ফাস্ট এবং স্মার্ট বাংলা কীবোর্ড!<br>
             <i>এখন <b>৯ লক্ষ+ শব্দের ডিকশনারি</b> এবং <b>বাংলা ইংরেজি আরবিসহ যেকোনো ভাষায় ভয়েস টাইপিং</b> সাপোর্টসহ।</i></p>
@@ -648,5 +844,52 @@ OCR এর শর্টকাট: ctrl+alt+s</li></br>
         </div>
     </footer>
 
+    <!-- Script for Feature Slider (Updated for Sliding Animation) -->
+    <script>
+        let slideIndex = 0;
+        let slideInterval;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const sliderContent = document.getElementById('sliderContent');
+
+        function updateSlider() {
+            // Apply horizontal translation (sliding effect)
+            sliderContent.style.transform = `translateX(-${slideIndex * 100}%)`;
+            
+            // Update dot colors
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[slideIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % slides.length;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+            updateSlider();
+        }
+
+        function currentSlide(n) {
+            slideIndex = n;
+            updateSlider();
+        }
+
+        function startSlider() {
+            slideInterval = setInterval(nextSlide, 7000); // Increased duration to 7 seconds
+        }
+
+        function pauseSlider() {
+            clearInterval(slideInterval);
+        }
+
+        function resumeSlider() {
+            startSlider();
+        }
+
+        // Initialize slider
+        startSlider();
+    </script>
 </body>
 </html>
