@@ -168,7 +168,7 @@
             flex-shrink: 0;
         }
 
-        /* Feature Slider CSS (Updated for Sliding Animation) */
+        /* Feature Slider CSS */
         .hero-slider-wrapper {
             width: 50%;
             height: 280px; /* Fixed height for uniformity */
@@ -201,12 +201,39 @@
             margin-bottom: 15px;
         }
 
+        /* === Glass Shine Text Animation (Triggers Once Per Slide) === */
         .slide h3 {
-            color: var(--primary);
             margin: 0 0 10px 0;
             font-size: 1.4rem;
             line-height: 1.3;
+            
+            /* Background gradient for the shine effect */
+            background: linear-gradient(
+                110deg,
+                var(--primary) 0%,
+                var(--primary) 40%,
+                #ffffff 50%, /* The shiny glass part */
+                var(--primary) 60%,
+                var(--primary) 100%
+            );
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            background-position: -200% center; /* Initial position hidden to the left */
         }
+
+        /* When the slide is active, animate the glass shine once */
+        .slide.active h3 {
+            animation: glassShine 1.5s ease-in-out 0.6s forwards; 
+            /* 0.6s delay ensures the slide comes into view before shining starts */
+        }
+
+        @keyframes glassShine {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; } /* Ends off to the right */
+        }
+        /* ================================ */
 
         .slide p {
             color: var(--dark);
@@ -285,7 +312,7 @@
             .hero-banner { width: 80%; }
             .hero-slider-wrapper { width: 90%; }
             .slide { padding: 20px 35px; }
-            .hero-slider-wrapper:hover .slider-nav-btn { opacity: 1; } /* Always accessible or easy to tap on mobile */
+            .hero-slider-wrapper:hover .slider-nav-btn { opacity: 1; }
         }
 
         @media (max-width: 600px) {
@@ -476,7 +503,7 @@
                     
                     <div class="slider-content" id="sliderContent">
                         <!-- Slide 1 -->
-                        <div class="slide">
+                        <div class="slide active">
                             <div class="slide-icon">🅰️</div>
                             <h3>নতুন 'কথা এনকোডিং'</h3>
                             <p><b>"Kothamala"</b> ফন্টের মাধ্যমে এখন ইউনিকোড, আন্সি ও ইংরেজি সব এক ফন্টেই লেখা সম্ভব! ফন্ট পরিবর্তনের ঝামেলা চিরতরে শেষ।</p>
@@ -844,7 +871,7 @@ OCR এর শর্টকাট: ctrl+alt+s</li></br>
         </div>
     </footer>
 
-    <!-- Script for Feature Slider (Updated for Sliding Animation) -->
+    <!-- Script for Feature Slider -->
     <script>
         let slideIndex = 0;
         let slideInterval;
@@ -853,10 +880,15 @@ OCR এর শর্টকাট: ctrl+alt+s</li></br>
         const sliderContent = document.getElementById('sliderContent');
 
         function updateSlider() {
-            // Apply horizontal translation (sliding effect)
+            // ১. স্লাইডারটিকে বামে সরিয়ে নিয়ে আসা
             sliderContent.style.transform = `translateX(-${slideIndex * 100}%)`;
             
-            // Update dot colors
+            // ২. সবার থেকে active ক্লাস রিমুভ করে নতুন স্লাইডে যুক্ত করা 
+            // এর ফলে নতুন স্লাইডের লেখাটিতে পুনরায় গ্লাস ইফেক্টটি একদম প্রথম থেকে শুরু হবে!
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[slideIndex].classList.add('active');
+
+            // ৩. ডট আপডেট করা
             dots.forEach(dot => dot.classList.remove('active'));
             dots[slideIndex].classList.add('active');
         }
