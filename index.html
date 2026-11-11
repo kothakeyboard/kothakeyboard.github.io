@@ -201,18 +201,16 @@
             margin-bottom: 10px;
         }
 
-        /* === Glass Shine Text Animation (Triggers Once Per Slide) === */
+        /* === Glass Shine Text Animation === */
         .slide h3 {
             margin: 0 0 10px 0;
             font-size: 1.4rem;
             line-height: 1.3;
-            
-            /* Background gradient for the shine effect */
             background: linear-gradient(
                 110deg,
                 var(--primary) 0%,
                 var(--primary) 40%,
-                #ffffff 50%, /* The shiny glass part */
+                #ffffff 50%, 
                 var(--primary) 60%,
                 var(--primary) 100%
             );
@@ -286,7 +284,7 @@
             right: 0;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap; /* Allows dots to wrap on very small screens */
+            flex-wrap: wrap; 
             gap: 6px;
             padding: 0 20px;
             z-index: 10;
@@ -317,7 +315,7 @@
 
         @media (max-width: 600px) {
             .hero-banner, .hero-slider-wrapper { width: 100%; }
-            .hero-slider-wrapper { height: 320px; } /* Slightly taller for extra mobile space */
+            .hero-slider-wrapper { height: 320px; } 
         }
 
         /* --- End New Layout --- */
@@ -355,6 +353,39 @@
         section.bg-white { background-color: white; }
 
         .section-title { text-align: center; font-size: 2rem; margin-bottom: 40px; color: var(--dark); }
+
+/* --- Video Promo Section --- */
+        .video-section {
+            background-color: var(--light);
+            padding: 50px 0 20px 0;
+            text-align: center;
+        }
+        
+        /* ভিডিওটিকে স্লাইডারের মতো পারফেক্ট সাইজ দেওয়া হলো */
+        .video-container-inner {
+            max-width: 650px; 
+            margin: 0 auto;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 120, 215, 0.08); /* স্লাইডারের মতো শ্যাডো */
+            border: 1px solid rgba(0, 120, 215, 0.15); /* স্লাইডারের মতো বর্ডার */
+            background: #000;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
 
         /* What's New Box */
         .whats-new-box {
@@ -633,7 +664,7 @@
             <a href="https://drive.google.com/drive/u/0/folders/1saIx04GYJ0nCtGrFedzpL8nfdeU7Phu4" target="_blank" class="btn btn-primary">⬇️ ডাউনলোড করুন (Download)</a>
             
             <div class="badges">
-                <span class="badge badge-new">🔥 মেগা আপডেট (v4.45)</span>
+                <span class="badge badge-new">🔥 মেগা আপডেট (v4.47)</span>
                 <span class="badge">💻 Windows 10 | 11</span>
                 <span class="badge">🆓 Freemium</span>
                 <span class="badge">⚡ Zero-Allocation Fast</span>
@@ -641,10 +672,22 @@
         </div>
     </header>
 
-    <!-- What's New Section -->
-    <section id="changelog">
+<!-- === Promo Video Section === -->
+    <section class="video-section">
         <div class="container">
-            <h2 class="section-title">🚀 নতুন আপডেটে (v4.45) কী থাকছে?</h2>
+            <h2 class="section-title" style="margin-bottom: 25px; color: var(--primary);">🎥 কীবোর্ডের বিস্তারিত ফিচার দেখুন</h2>
+            <div class="video-container-inner">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/Cu5TI7LqBUo" title="Kotha Keyboard Promo Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's New Section -->
+    <section id="changelog" class="bg-white">
+        <div class="container">
+            <h2 class="section-title">🚀 নতুন আপডেটে (v4.47) কী থাকছে?</h2>
             <div class="whats-new-box">
                 <ul>
 					<li><b>কথা এনকোডিং (Kotha Encoding):</b>নতুন এনকোডিং ‘কথা এনকোডিং’ যুক্ত করা হয়েছে এবং কথা এনকোডিংয়ের জন্য একটি লেআউটও যুক্ত করা হয়েছে। এই এনকোডিংয়ের সুবিধা হলো একই ফন্টে বাংলায় ইউনিকোড বা অভ্র মোডে বাংলা+নতুন কথা এনকোডিং আন্সি মোডে বাংলা+ইংরেজী একইসাথে এবং একই ফন্টে লেখা যায়। এজন্য নতুন একটি ফন্টও যুক্ত হয়েছে নাম- "Kothamala". অন্যান্য এনকোডিং যেমন বিজয় এনকোডিংয়ে sutonnymj ফন্টে শুধু আন্সি মোডে বাংলা লেখা যায়, ইংরেজী লেখা যায়না, কিন্তু আমাদের নতুন এনকোডিংয়ের ফলে এক ফন্টেই সব লেখা যাবে, যারফলে বাংলা+ইংরেজী+আন্সি এর জন্য এখন থেকে ফন্ট পরিবর্তন করার ঝামেলা আর থাকছেনা! কথা এনকোডিং লেআউট শর্টকাট: ctrl+6, ফোনেটিক মোডে শর্টকাট: alt+0, ফোনেটিক বিজয় আন্সি: ctrl+0 </li>
@@ -733,7 +776,7 @@ OCR এর শর্টকাট: ctrl+alt+s</li></br>
     </section>
 
     <!-- Features Section -->
-    <section class="bg-white" id="features">
+    <section id="features">
         <div class="container">
             <h2 class="section-title">✨ মূল ফিচারসমূহ (Core Features)</h2>
             
@@ -784,7 +827,7 @@ OCR এর শর্টকাট: ctrl+alt+s</li></br>
     </section>
 
     <!-- Interfaces / Screenshots Section -->
-    <section id="interface">
+    <section class="bg-white" id="interface">
         <div class="container">
             <h2 class="section-title">💻 ইউজার ইন্টারফেস (Screenshots)</h2>
             <div class="screenshot-grid">
@@ -839,7 +882,7 @@ OCR এর শর্টকাট: ctrl+alt+s</li></br>
     </section>
 
     <!-- Voice Typing Section -->
-    <section class="bg-white">
+    <section>
         <div class="container">
             <h2 class="section-title">🎙️ ক্রস-ল্যাঙ্গুয়েজ ভয়েস টাইপিং (কীভাবে কাজ করে?)</h2>
             <div class="steps">
@@ -848,14 +891,14 @@ OCR এর শর্টকাট: ctrl+alt+s</li></br>
                     <li>কীবোর্ডের ট্রে মেনু বা ডাবল-ক্লিক করে <b>ওয়াইফাই ভয়েস টাইপিং</b> অপশনটি চালু করুন।</li>
                     <li>স্ক্রিনে আসা <b>QR কোডটি</b> আপনার মোবাইল দিয়ে স্ক্যান করুন (পিসি ও মোবাইল একই ওয়াইফাই বা হটস্পটে থাকতে হবে)।</li>
                     <li>মোবাইলের ব্রাউজারে একটি পেজ ওপেন হবে। সেখানে থাকা টেক্সটবক্সে ক্লিক করে আপনার <b>মোবাইলের কীবোর্ডের মাইক (🎤) আইকনে</b> চাপ দিন।</li>
-                    <li>এবার আপনি <b>বাংলা, ইংরেজি, আরবি, হিন্দি—যেকোনো ভাষায়</b> কথা বলুন। মোবাইলের কীবোর্ড যা ইনপুট দিবে, সেটি চোখের পলকে আপনার পিসিতে টাইপ হয়ে যাবে!</li>
+                    <li>এবার আপনি <b>বাংলা, ইংরেজি, আরবি, হিন্দি—যেকোনো ভাষায়</b> কথা বলুন। মোব মোবাইলের কীবোর্ড যা ইনপুট দিবে, সেটি চোখের পলকে আপনার পিসিতে টাইপ হয়ে যাবে!</li>
                 </ol>
             </div>
         </div>
     </section>
 
     <!-- Bangla Toolbox Ecosystem -->
-    <section id="toolbox">
+    <section id="toolbox" class="bg-white">
         <div class="container">
             <div class="toolbox-box">
                 <img src="https://kothakeyboard.github.io/assets/Bangla_Keyboard_CS.png" alt="Bangla Toolbox">
@@ -869,7 +912,7 @@ OCR এর শর্টকাট: ctrl+alt+s</li></br>
     </section>
 
     <!-- Pricing Section -->
-    <section class="bg-white" id="pricing">
+    <section id="pricing">
         <div class="container">
             <h2 class="section-title">👑 প্রিমিয়াম লাইসেন্স ও প্রাইসিং</h2>
             <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px;">
